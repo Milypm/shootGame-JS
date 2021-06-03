@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "webpack --mode development --watch",
     "build": "webpack --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "watch": "jest --watch *.js"
   },
   "repository": {
     "type": "git",
@@ -21,10 +22,14 @@
   },
   "homepage": "https://github.com/Milypm/shootGame-JS#readme",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
+    "jest": "^27.0.4",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
@@ -33,6 +38,32 @@
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
+    "identity-obj-proxy": "^3.0.0",
     "phaser": "^3.55.2"
+  },
+  "jest": {
+    "verbose": true,
+    "resetMocks": false,
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ],
+    "modulePaths": [
+      "/shared/vendor/modules"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "bower_components",
+      "shared"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",
+      "^config$": "<rootDir>/configs/app-config.js"
+    }
   }
 }
