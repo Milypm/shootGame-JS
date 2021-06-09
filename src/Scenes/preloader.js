@@ -99,23 +99,6 @@ class preloaderScene extends Phaser.Scene {
     }.bind(this));
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
-   
-    // load assets needed in our game
-    this.load.image('gameTitle', './assets/images/game-title.png');
-    this.load.image('playBtn', './assets/images/sprBtnPlay.png');
-    this.load.image('playBtnDown', './assets/images/sprBtnPlayDown.png');
-    this.load.image('playBtnHover', './assets/images/sprBtnPlayHover.png');
-    this.load.image('restartBtn', './assets/images/sprBtnRestart.png');
-    this.load.image('restartBtnDown', './assets/images/sprBtnRestartDown.png');
-    this.load.image('restartBtnHover', './assets/images/sprBtnRestartHover.png');
-    this.load.image('laserEnemy', './assets/images/sprLaserEnemy.png');
-    this.load.image('laserPlayer', './assets/images/sprLaserPlayer.png');
-    this.load.image('blueGem', './assets/images/blue-gem.png');
-    this.load.image('whiteGem', './assets/images/white-gem.png');
-    this.load.image('enemy', './assets/images/enemy.png');
-    this.load.image('player', './assets/images/player.png');
-    this.load.image('asteroidOne', './assets/images/asteroidretro1.jpeg');
-    this.load.image('asteroidTwo', './assets/images/asteroidretro2.png');
   }
   init () {
     this.readyCount = 0;
@@ -126,9 +109,6 @@ class preloaderScene extends Phaser.Scene {
     if (this.readyCount === 2) {
       this.scene.start('Title');
     }
-  }
-  create () {
-
   }
 };
 

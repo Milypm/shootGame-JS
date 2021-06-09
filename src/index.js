@@ -12,10 +12,11 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-        gravity: { y: 300 },
-        debug: false
+        gravity: { y: 300 }
     }
   },
+  pixelArt: true,
+  roundPixels: true,
   dom: {
     createContainer: true
   }
