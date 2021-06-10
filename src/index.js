@@ -34,6 +34,7 @@ class Game extends Phaser.Game {
   }
 }
 
-export default config;
-API.setGame();
+if (API.getScores() === undefined) { API.setGame() }
 window.game = new Game();
+
+export default config;

@@ -1,5 +1,4 @@
 import 'phaser';
-import API from '../api';
 import config from '../index';
 
 let newuser;
@@ -130,13 +129,6 @@ class titleScene extends Phaser.Scene {
       this.add.zone(config.width/2, config.height/2 - offset * 100, config.width, config.height)
     );
   }
-   
-  // centerButtonText (gameText, gameButton) {
-  //   Phaser.Display.Align.In.Center(
-  //     gameText,
-  //     gameButton
-  //   );
-  // }
 };
 
-export { titleScene, newuser };
+export default { titleScene, newuser };

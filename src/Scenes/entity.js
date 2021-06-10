@@ -37,14 +37,6 @@ class Entity extends Phaser.GameObjects.Sprite {
       this.setData("isDead", true);
     }
   }
-
-  collectGem = () => {
-
-  }
-
-  updateScore = () => {
-    
-  }
 };
 
 class Player extends Entity {
@@ -137,8 +129,6 @@ class BlueGem extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, "blueGem");
     this.body.velocity.y = 50;
-    //this.body.velocity.y = Phaser.Math.Between(50, 100);
-    //this.play("blueGem");
   }
 };
 
@@ -146,8 +136,6 @@ class WhiteGem extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, "whiteGem");
     this.body.velocity.y = 50;
-    //this.body.velocity.y = Phaser.Math.Between(50, 100);
-    //this.play("whiteGem");
   }
 };
 

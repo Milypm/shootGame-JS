@@ -30,7 +30,7 @@ class gameScene extends Phaser.Scene {
   create () {
     const user = newuser;
     let score = 0;
-    
+
     this.add.image(200, 0, 'galaxy');
 
     this.anims.create({
@@ -112,7 +112,6 @@ class gameScene extends Phaser.Scene {
         if (enemy.onDestroy !== undefined) { //checks if the enemy is still active (and not destroyed)
           enemy.onDestroy(); //destroys enemy if true
         }
-      
         enemy.explode(true);
         playerLaser.destroy();
         this.physics.pause();
@@ -189,12 +188,10 @@ class gameScene extends Phaser.Scene {
         enemy.x > this.game.config.width + enemy.displayWidth ||
         enemy.y < -enemy.displayHeight * 4 ||
         enemy.y > this.game.config.height + enemy.displayHeight) {
-    
         if (enemy) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
           }
-    
           enemy.destroy();
         }
       }
@@ -229,16 +226,16 @@ class gameScene extends Phaser.Scene {
     }
   }
 
-  getEnemiesByType = (type) => {
-    const arr = [];
-    for (let i = 0; i < this.enemies.getChildren().length; i++) {
-      const enemy = this.enemies.getChildren()[i];
-      if (enemy.getData("type") == type) {
-        arr.push(enemy);
-      }
-    }
-    return arr;
-  }
+  // getEnemiesByType = (type) => {
+  //   const arr = [];
+  //   for (let i = 0; i < this.enemies.getChildren().length; i++) {
+  //     const enemy = this.enemies.getChildren()[i];
+  //     if (enemy.getData("type") == type) {
+  //       arr.push(enemy);
+  //     }
+  //   }
+  //   return arr;
+  // }
 };
 
 export default gameScene;
