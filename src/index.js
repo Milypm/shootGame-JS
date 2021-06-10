@@ -2,7 +2,7 @@ import 'phaser';
 import API from './api';
 import bootScene from './Scenes/boot';
 import preloaderScene from './Scenes/preloader';
-import titleScene from './Scenes/title';
+import menuScene from './Scenes/menu';
 import gameScene from './Scenes/game';
 
 const config = {
@@ -28,13 +28,12 @@ class Game extends Phaser.Game {
     super(config);
     this.scene.add('Boot', bootScene);
     this.scene.add('Preloader', preloaderScene);
-    this.scene.add('Title', titleScene);
+    this.scene.add('Menu', menuScene);
     this.scene.add('Game', gameScene);
     this.scene.start('Boot');
   }
 }
 
-if (API.getScores() === undefined) { API.setGame() }
 window.game = new Game();
 
 export default config;

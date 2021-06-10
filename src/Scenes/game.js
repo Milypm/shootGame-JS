@@ -1,6 +1,6 @@
 import 'phaser';
 import API from '../api';
-import newuser from './title';
+import newuser from './menu';
 import { Player, Enemy, BlueGem, WhiteGem } from './entity';
 
 class gameScene extends Phaser.Scene {

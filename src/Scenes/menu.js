@@ -3,9 +3,10 @@ import config from '../index';
 
 let newuser;
 
-class titleScene extends Phaser.Scene {
+class menuScene extends Phaser.Scene {
   constructor () {
-    super('Title');
+    super('Menu');
+    console.log('on menuScene constructor');
   }
   preload () {
     this.load.image('gameTitle', './assets/images/game-title.png');
@@ -131,4 +132,4 @@ class titleScene extends Phaser.Scene {
   }
 };
 
-export default { titleScene, newuser };
+export default { menuScene, newuser };
