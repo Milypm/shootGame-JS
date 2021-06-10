@@ -37,13 +37,21 @@ class Entity extends Phaser.GameObjects.Sprite {
       this.setData("isDead", true);
     }
   }
+
+  collectGem = () => {
+
+  }
+
+  updateScore = () => {
+    
+  }
 };
 
 class Player extends Entity {
   constructor (scene, x, y, key) {
     super(scene, x, y, key, 'Player');
     this.setData('speed', 200);
-    this.play('sprPlayer');
+    this.play('player');
     this.setData("isShooting", false);
     this.setData("timerShootDelay", 10);
     this.setData("timerShootTick", this.getData("timerShootDelay") - 1);
@@ -90,7 +98,7 @@ class PlayerLaser extends Entity {
 
 class Enemy extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'enemy', 'Enemy');
+    super(scene, x, y, 'enemy');
     this.body.velocity.y = Phaser.Math.Between(50, 100);
     this.shootTimer = this.scene.time.addEvent({
       delay: 600,
@@ -127,15 +135,19 @@ class EnemyLaser extends Entity {
 
 class BlueGem extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'blueGem');
-    this.body.velocity.y = Phaser.Math.Between(50, 100);
+    super(scene, x, y, "blueGem");
+    this.body.velocity.y = 50;
+    //this.body.velocity.y = Phaser.Math.Between(50, 100);
+    //this.play("blueGem");
   }
 };
 
 class WhiteGem extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'whiteGem');
-    this.body.velocity.y = Phaser.Math.Between(50, 100);
+    super(scene, x, y, "whiteGem");
+    this.body.velocity.y = 50;
+    //this.body.velocity.y = Phaser.Math.Between(50, 100);
+    //this.play("whiteGem");
   }
 };
 

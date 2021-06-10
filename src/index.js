@@ -1,5 +1,5 @@
 import 'phaser';
-import './styles/style.css';
+import API from './api';
 import bootScene from './Scenes/boot';
 import preloaderScene from './Scenes/preloader';
 import titleScene from './Scenes/title';
@@ -17,6 +17,7 @@ const config = {
   },
   pixelArt: true,
   roundPixels: true,
+  parent: 'phaser-container',
   dom: {
     createContainer: true
   }
@@ -34,4 +35,5 @@ class Game extends Phaser.Game {
 }
 
 export default config;
+API.setGame();
 window.game = new Game();

@@ -1,5 +1,7 @@
 import 'phaser';
-import { Player, Enemy } from './entity';
+import API from '../api';
+import newuser from './title';
+import { Player, Enemy, BlueGem, WhiteGem } from './entity';
 
 class gameScene extends Phaser.Scene {
   constructor () {
@@ -26,6 +28,9 @@ class gameScene extends Phaser.Scene {
   }
 
   create () {
+    const user = newuser;
+    let score = 0;
+    
     this.add.image(200, 0, 'galaxy');
 
     this.anims.create({
@@ -50,10 +55,11 @@ class gameScene extends Phaser.Scene {
       'player'
     );
 
+    this.gems = this.add.group();
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
-    //event (act as a timer) which will spawn our enemies
+    //event (act as a timer) which will spawn the enemies
     this.time.addEvent({
       delay: 800,
       callback: function() {
@@ -62,8 +68,40 @@ class gameScene extends Phaser.Scene {
           Phaser.Math.Between(0, this.game.config.width),
           0
         );
-        //enemy.setScale(Phaser.Math.Between(10, 20) * 0.1);
+        //enemy.setScale(Phaser.Math.Between(10, 10) * 0.1);
         this.enemies.add(enemy);
+      },
+      callbackScope: this,
+      loop: true
+    });
+
+    this.time.addEvent({
+      delay: 1500,
+      callback: function() {
+        const blueG = new BlueGem(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          0
+        );
+        blueG.displayWidth = 40;
+        blueG.displayHeight = 40;
+        this.gems.add(blueG);
+      },
+      callbackScope: this,
+      loop: true
+    });
+
+    this.time.addEvent({
+      delay: 1700,
+      callback: function() {
+        const whiteG = new WhiteGem(
+          this,
+          Phaser.Math.Between(0, this.game.config.width),
+          0
+        );
+        whiteG.displayWidth = 45;
+        whiteG.displayHeight = 45;
+        this.gems.add(whiteG);
       },
       callbackScope: this,
       loop: true
@@ -77,14 +115,18 @@ class gameScene extends Phaser.Scene {
       
         enemy.explode(true);
         playerLaser.destroy();
+        this.physics.pause();
+        score += 15;
+        API.setPlayer(user, score);
       }
     });
 
     this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
       if (!player.getData("isDead") &&
           !enemy.getData("isDead")) {
-        player.explode(false);
+        //player.explode(false);
         enemy.explode(true);
+        this.physics.pause();
       }
     });
 
@@ -93,7 +135,15 @@ class gameScene extends Phaser.Scene {
           !laser.getData("isDead")) {
         laser.destroy();
         player.explode(true);
+        this.physics.pause();
+        API.setPlayer(user, score);
       }
+    });
+
+    this.physics.add.overlap(this.player, this.gems, function(player, gem) {
+      let points;
+      (!player.getData("isDead") && gem.width === 40) ? points = 30 : points = 50;
+      score += points;
     });
 
     this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);

@@ -1,6 +1,8 @@
 import 'phaser';
+import API from '../api';
 import config from '../index';
-// import '../styles/style.css';
+
+let newuser;
 
 class titleScene extends Phaser.Scene {
   constructor () {
@@ -29,6 +31,37 @@ class titleScene extends Phaser.Scene {
       btnDown: this.sound.add("sndBtnDown")
     };
     this.add.image(640, 100, 'gameTitle');
+
+    //Add new player name
+    const text = this.add.text(555, 180, 'New Pilot', { color: '#fff', fontSize: '25px '});
+    const form = `<form style="display: flex; border-radius: 15px; border: 2px solid #fff"><input type="text" name="nameField" placeholder="Enter your name" style="font-size: 20px; width: 250px; border: none; background: transparent; color: #fff; padding-left: 10px">
+		<input type="button" name="saveBtn" value="Save!" style="font-size: 18px; border-radius: 15px; background: #3f93df; border: none; padding: 5px 10px; margin-right: 0"></form>`;
+    const element = this.add.dom(640, 250).createFromHTML(form);
+    //element.setPerspective(800);
+    element.addListener('click');
+    element.on('click', function (event) {
+        if (event.target.name === 'saveBtn')
+        {
+            var inputUsername = this.getChildByName('nameField');
+            //  Have they entered anything?
+            if (inputUsername.value !== '')
+            {
+                //  Turn off the click events
+                this.removeListener('click');
+                //  Hide the login element
+                this.setVisible(false);
+                //  Populate the text with whatever they typed in as the username!
+                text.setText('Welcome ' + inputUsername.value);
+                newuser = inputUsername.value;
+            }
+            else
+            {
+                //  Flash the prompt
+                this.setVisible(true);
+            }
+        }
+    });
+
     // Game
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
@@ -49,14 +82,8 @@ class titleScene extends Phaser.Scene {
     }, this);
     this.btnPlay.on("pointerup", function() {
       this.btnPlay.setTexture("sprBtnPlay");
-      this.scene.start("Game");;
+      this.scene.start("Game");
     }, this);
-    // this.playButton = this.add.image(100, 200, 'playBtn').setInteractive();;
-    // this.centerButton(this.playButton, 1);
-
-    // this.playButton.on('pointerdown', function (pointer) {
-    //   this.scene.start('Game');
-    // }.bind(this));
 
     // Options
     // this.optionsButton = this.add.sprite(300, 200, 'redButton1').setInteractive();
@@ -112,4 +139,4 @@ class titleScene extends Phaser.Scene {
   // }
 };
 
-export default titleScene;
+export { titleScene, newuser };
