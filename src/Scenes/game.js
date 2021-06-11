@@ -1,5 +1,5 @@
 import 'phaser';
-import API from '../api';
+//import API from '../api';
 import newuser from './menu';
 import { Player, Enemy, BlueGem, WhiteGem } from './entity';
 
@@ -116,7 +116,7 @@ class gameScene extends Phaser.Scene {
         playerLaser.destroy();
         this.physics.pause();
         score += 15;
-        API.setPlayer(user, score);
+        //API.setPlayer(user, score);
       }
     });
 
@@ -135,7 +135,7 @@ class gameScene extends Phaser.Scene {
         laser.destroy();
         player.explode(true);
         this.physics.pause();
-        API.setPlayer(user, score);
+        //API.setPlayer(user, score);
       }
     });
 

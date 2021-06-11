@@ -1,5 +1,4 @@
 import 'phaser';
-import API from './api';
 import bootScene from './Scenes/boot';
 import preloaderScene from './Scenes/preloader';
 import menuScene from './Scenes/menu';
@@ -35,5 +34,4 @@ class Game extends Phaser.Game {
 }
 
 window.game = new Game();
-
 export default config;

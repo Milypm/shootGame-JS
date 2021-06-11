@@ -6,7 +6,6 @@ let newuser;
 class menuScene extends Phaser.Scene {
   constructor () {
     super('Menu');
-    console.log('on menuScene constructor');
   }
   preload () {
     this.load.image('gameTitle', './assets/images/game-title.png');
@@ -85,43 +84,32 @@ class menuScene extends Phaser.Scene {
       this.scene.start("Game");
     }, this);
 
-    // Options
-    // this.optionsButton = this.add.sprite(300, 200, 'redButton1').setInteractive();
-    // this.centerButton(this.optionsButton);
+    Commands
+    this.creditsButton = this.add.sprite(300, 200, 'redButton1').setInteractive();
+    this.centerButton(this.creditsButton, -1);
 
-    // this.optionsText = this.add.text(0, 0, 'Options', { fontSize: '32px', fill: '#fff' });
-    // this.centerButtonText(this.optionsText, this.optionsButton);
+    this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
+    this.centerButtonText(this.creditsText, this.creditsButton);
 
-    // this.optionsButton.on('pointerdown', function (pointer) {
-    //   this.scene.start('Options');
-    // }.bind(this));
+    this.creditsButton.on('pointerdown', function (pointer) {
+      this.scene.start('Credits');
+    }.bind(this));
 
-    // Credits
-    // this.creditsButton = this.add.sprite(300, 200, 'redButton1').setInteractive();
-    // this.centerButton(this.creditsButton, -1);
+    this.input.on('pointerover', function (event, gameObjects) {
+      gameObjects[0].setTexture('redButton2');
+    });
 
-    // this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
-    // this.centerButtonText(this.creditsText, this.creditsButton);
+    this.input.on('pointerout', function (event, gameObjects) {
+      gameObjects[0].setTexture('redButton1');
+    });
 
-    // this.creditsButton.on('pointerdown', function (pointer) {
-    //   this.scene.start('Credits');
-    // }.bind(this));
+    this.input.on('pointerover', function (event, gameObjects) {
+      gameObjects[0].setTexture('redButton2');
+    });
 
-    // this.input.on('pointerover', function (event, gameObjects) {
-    //   gameObjects[0].setTexture('redButton2');
-    // });
-
-    // this.input.on('pointerout', function (event, gameObjects) {
-    //   gameObjects[0].setTexture('redButton1');
-    // });
-
-    // this.input.on('pointerover', function (event, gameObjects) {
-    //   gameObjects[0].setTexture('redButton2');
-    // });
-
-    // this.input.on('pointerout', function (event, gameObjects) {
-    //   gameObjects[0].setTexture('redButton1');
-    // });
+    this.input.on('pointerout', function (event, gameObjects) {
+      gameObjects[0].setTexture('redButton1');
+    });
   }
 
   centerButton (gameObject, offset = 0) {

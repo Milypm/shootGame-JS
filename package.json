@@ -42,6 +42,7 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "identity-obj-proxy": "^3.0.0",
     "phaser": "^3.55.2"
   },

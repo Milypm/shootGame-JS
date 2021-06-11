@@ -1,31 +1,8 @@
+import axios from 'axios';
+
+const gameId = 'YzX7p2UKMPvV8zOmUwF4';
+
 const API = (() => {
-  // const setGame = async () => {
-  //   let gameID;
-    
-  //   try {
-  //     const game = { 'name': 'Space-Shooter-0610' }
-  //     const responseGame = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/', {
-  //       method: 'POST',
-  //       header: { 
-  //         'Content-Type': 'application/json',
-  //         'charset': 'UTF-8',
-  //       },
-  //       body: JSON.stringify(game),
-  //       mode: 'cors',
-  //       cache: 'no-cache'
-  //     });
-  //     const returnValue = await responseGame.json();
-  //     //returnValue.split(' ');
-  //     //gameID = returnValue[3];
-  //     console.log(returnValue);
-  //   } catch {
-  //     console.log('error posting game');
-  //   }
-  //   return gameID;
-  // };
-
-  //let gameIdentifier = setGame();
-
   const getScores = async () => {
     let returnValue;
     try {
@@ -61,7 +38,7 @@ const API = (() => {
     return newPlayer;
   };
 
-  return {  getScores, setPlayer };
+  return {  setGame, getScores, setPlayer };
 })();
 
 export default API;
