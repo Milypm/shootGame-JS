@@ -1,6 +1,5 @@
 import 'phaser';
-//import API from '../api';
-import newuser from './menu';
+import API from '../api';
 import { Player, Enemy, BlueGem, WhiteGem } from './entity';
 
 class gameScene extends Phaser.Scene {
@@ -28,10 +27,22 @@ class gameScene extends Phaser.Scene {
   }
 
   create () {
-    const user = newuser;
+    const user = API.player;
     let score = 0;
+    let blueGCounter = 0;
+    let whiteGCounter = 0;
 
     this.add.image(200, 0, 'galaxy');
+
+    this.add.text(1200, 50, `Pilot: ${user}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
+    const blueGScore = this.add.image(1200, 60, 'blueGem');
+    const whiteGScore = this.add.image(1200, 55, 'whiteGem');
+    blueGScore.displayWidth = 25;
+    blueGScore.displayHeight = 25;
+    whiteGScore.displayWidth = 25;
+    whiteGScore.displayHeight = 25;
+    this.add.text(1210, 60, `${blueGCounter}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' }); //blueG counter
+    this.add.text(1210, 55, `${whiteGCounter}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' }); //whiteG counter
 
     this.anims.create({
       key: 'sprExplosion',
@@ -116,7 +127,7 @@ class gameScene extends Phaser.Scene {
         playerLaser.destroy();
         this.physics.pause();
         score += 15;
-        //API.setPlayer(user, score);
+        API.setPlayerScore(user, score);
       }
     });
 
@@ -135,13 +146,19 @@ class gameScene extends Phaser.Scene {
         laser.destroy();
         player.explode(true);
         this.physics.pause();
-        //API.setPlayer(user, score);
+        API.setPlayerScore(user, score);
       }
     });
 
     this.physics.add.overlap(this.player, this.gems, function(player, gem) {
       let points;
-      (!player.getData("isDead") && gem.width === 40) ? points = 30 : points = 50;
+      if (!player.getData("isDead") && gem.width === 40) {
+        points = 30;
+        blueGCounter += 1;
+      } else {
+        points = 50;
+        whiteGCounter += 1;
+      }
       score += points;
     });
 

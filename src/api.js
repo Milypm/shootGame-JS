@@ -1,44 +1,51 @@
-import axios from 'axios';
-
-const gameId = 'YzX7p2UKMPvV8zOmUwF4';
+//import axios from 'axios';
 
 const API = (() => {
+  const gameId = 'YzX7p2UKMPvV8zOmUwF4';
+
+  const userName = (name) => {
+    return name;
+  };
+
+  const player = userName();
+
   const getScores = async () => {
     let returnValue;
     try {
-      const storedScores = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameIdentifier}/scores/`, { mode: 'cors' });
+      const storedScores = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, { mode: 'cors' });
       returnValue = await storedScores.json();
       console.log(returnValue);
-    } catch {
-      console.log('error getting scores data');
+    } catch (er) {
+      console.log(er);
     }
     return returnValue;
   };
 
-  const setPlayer = async (user, score) => {
-    const newPlayer = {
+  const setPlayerScore = async (user, score) => {
+    const newPlayerScore = {
       'user': user,
       'score': score
     }
     try {
-      const response = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameIdentifier}/scores/`, {
+      const response = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
         method: 'POST',
         header: { 
           'Content-Type': 'application/json',
           'charset': 'UTF-8',
         },
-        body: JSON.stringify(newPlayer),
+        body: JSON.stringify(newPlayerScore),
         mode: 'cors',
       });
       const resultArray = await response.json();
-      resultArray.push(newPlayer);
-    } catch {
-      console.log('error posting a new score');
+      console.log(resultArray);
+      resultArray.push(newPlayerScore);
+    } catch (er) {
+      console.log(er);
     }
-    return newPlayer;
+    return resultArray;
   };
 
-  return {  setGame, getScores, setPlayer };
+  return {  player, userName, getScores, setPlayerScore };
 })();
 
 export default API;
