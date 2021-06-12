@@ -15,7 +15,7 @@ class commandsScene extends Phaser.Scene {
     };
 
     const div = `
-      <div style="display: flex; flex-direction: column; align-items: flex-start; color: white; font-size: 20px">
+      <div style="display: flex; flex-direction: column; align-items: flex-start; color: white; font-size: 20px; font-family: Courier;">
         <div style="display: flex">  
           <p>> Use the arrow keys for moving the spaceship: UP, DOWN, LEFT, RIGHT</p>
           <img src="./assets/images/move-keys.png" style="width: 90px; height: 60px; margin-left: 20px">

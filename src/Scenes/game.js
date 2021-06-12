@@ -1,5 +1,5 @@
 import 'phaser';
-import API from '../api';
+import scoreAndAPI from '../api';
 import { Player, Enemy, BlueGem, WhiteGem } from './entity';
 
 class gameScene extends Phaser.Scene {
@@ -14,8 +14,6 @@ class gameScene extends Phaser.Scene {
     this.load.image('laserPlayer', './assets/images/sprLaserPlayer.png');
     this.load.image('blueGem', './assets/images/blue-gem.png');
     this.load.image('whiteGem', './assets/images/white-gem.png');
-    this.load.image('asteroidOne', './assets/images/asteroidretro1.jpeg');
-    this.load.image('asteroidTwo', './assets/images/asteroidretro2.png');
     this.load.spritesheet('sprExplosion', './assets/images/sprExplosion.png', {
       frameWidth: 32,
       frameHeight: 32
@@ -27,22 +25,28 @@ class gameScene extends Phaser.Scene {
   }
 
   create () {
-    const user = API.player;
+    const user = scoreAndAPI.nameForScore();
+    console.log(user);
     let score = 0;
-    let blueGCounter = 0;
     let whiteGCounter = 0;
+    let blueGCounter = 0;
 
     this.add.image(200, 0, 'galaxy');
 
-    this.add.text(1200, 50, `Pilot: ${user}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
-    const blueGScore = this.add.image(1200, 60, 'blueGem');
-    const whiteGScore = this.add.image(1200, 55, 'whiteGem');
+    this.add.text(1100, 15, `Pilot: ${user}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
+    const whiteGScore = this.add.image(1170, 45, 'whiteGem');
+    const blueGScore = this.add.image(1170, 70, 'blueGem');
     blueGScore.displayWidth = 25;
     blueGScore.displayHeight = 25;
     whiteGScore.displayWidth = 25;
     whiteGScore.displayHeight = 25;
-    this.add.text(1210, 60, `${blueGCounter}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' }); //blueG counter
-    this.add.text(1210, 55, `${whiteGCounter}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' }); //whiteG counter
+    this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    this.add.text(1190, 62, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+
+    const gemsCounter = (whiteGCounter, blueGCounter) => {
+      this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+      this.add.text(1190, 62, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    }
 
     this.anims.create({
       key: 'sprExplosion',
@@ -79,7 +83,6 @@ class gameScene extends Phaser.Scene {
           Phaser.Math.Between(0, this.game.config.width),
           0
         );
-        //enemy.setScale(Phaser.Math.Between(10, 10) * 0.1);
         this.enemies.add(enemy);
       },
       callbackScope: this,
@@ -117,49 +120,54 @@ class gameScene extends Phaser.Scene {
       callbackScope: this,
       loop: true
     });
-    //collision check between two game objects
+
     this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
       if (enemy) {
-        if (enemy.onDestroy !== undefined) { //checks if the enemy is still active (and not destroyed)
+        if (enemy.onDestroy() !== undefined) { //checks if the enemy is still active (and not destroyed)
           enemy.onDestroy(); //destroys enemy if true
         }
         enemy.explode(true);
         playerLaser.destroy();
-        this.physics.pause();
         score += 15;
-        API.setPlayerScore(user, score);
-      }
-    });
-
-    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
-      if (!player.getData("isDead") &&
-          !enemy.getData("isDead")) {
-        //player.explode(false);
-        enemy.explode(true);
-        this.physics.pause();
-      }
-    });
-
-    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
-      if (!player.getData("isDead") &&
-          !laser.getData("isDead")) {
-        laser.destroy();
-        player.explode(true);
-        this.physics.pause();
-        API.setPlayerScore(user, score);
       }
     });
 
     this.physics.add.overlap(this.player, this.gems, function(player, gem) {
       let points;
       if (!player.getData("isDead") && gem.width === 40) {
+        gem.destroy();
         points = 30;
         blueGCounter += 1;
+        gemsCounter(whiteGCounter, blueGCounter);
       } else {
+        gem.destroy();
         points = 50;
         whiteGCounter += 1;
+        gemsCounter(whiteGCounter, blueGCounter);
       }
       score += points;
+    });
+
+    this.physics.add.collider(this.player, this.enemies, function(player, enemy) {
+      if (!player.getData("isDead") && !enemy.getData("isDead")) {
+        console.log(score);
+        player.explode(true);
+        enemy.explode(true);
+        scoreAndAPI.setPlayerScore(user, score);
+        scoreAndAPI.getScore(score);
+        // player.onDestroy();
+      }
+    });
+
+    this.physics.add.collider(this.player, this.enemyLasers, function(player, laser) {
+      if (!player.getData("isDead") && !laser.getData("isDead")) {
+        console.log(score);
+        laser.destroy();
+        player.explode(true);
+        scoreAndAPI.setPlayerScore(user, score);
+        scoreAndAPI.getScore(score);
+        //player.onDestroy();
+      }
     });
 
     this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
@@ -167,6 +175,14 @@ class gameScene extends Phaser.Scene {
     this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
     this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+  }
+
+  counterWhite = (num) => {
+    return num;
+  }
+
+  counterBlue = (num) => {
+    return num;
   }
 
   update () {
@@ -194,6 +210,8 @@ class gameScene extends Phaser.Scene {
         this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
         this.player.setData("isShooting", false);
       }
+    } else {
+      this.player.onDestroy();
     }
 
     for (let i = 0; i < this.enemies.getChildren().length; i++) {
@@ -242,17 +260,6 @@ class gameScene extends Phaser.Scene {
       }
     }
   }
-
-  // getEnemiesByType = (type) => {
-  //   const arr = [];
-  //   for (let i = 0; i < this.enemies.getChildren().length; i++) {
-  //     const enemy = this.enemies.getChildren()[i];
-  //     if (enemy.getData("type") == type) {
-  //       arr.push(enemy);
-  //     }
-  //   }
-  //   return arr;
-  // }
 };
 
 export default gameScene;

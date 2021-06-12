@@ -5,6 +5,7 @@ import menuScene from './Scenes/menu';
 import commandsScene from './Scenes/commands';
 import gameScene from './Scenes/game';
 import gameOverScene from './Scenes/gameover';
+import scoresScene from './Scenes/scores';
 
 const config = {
   type: Phaser.AUTO,
@@ -33,7 +34,8 @@ class Game extends Phaser.Game {
     this.scene.add('Commands', commandsScene);
     this.scene.add('Game', gameScene);
     this.scene.add('GameOver', gameOverScene);
-    this.scene.start('Boot');
+    this.scene.add('Scores', scoresScene);
+    this.scene.start('Menu');
   }
 }
 

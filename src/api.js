@@ -1,13 +1,25 @@
-//import axios from 'axios';
+import axios from 'axios';
 
-const API = (() => {
+const scoreAndAPI = (() => {
   const gameId = 'YzX7p2UKMPvV8zOmUwF4';
+  let player;
+  let score;
 
   const userName = (name) => {
-    return name;
+    player = name;
   };
 
-  const player = userName();
+  const nameForScore = () => {
+    return player;
+  };
+
+  const getScore = (curScore) => {
+    score = curScore;
+  };
+
+  const scoreForOver = () => {
+    return score;
+  };
 
   const getScores = async () => {
     let returnValue;
@@ -22,30 +34,26 @@ const API = (() => {
   };
 
   const setPlayerScore = async (user, score) => {
-    const newPlayerScore = {
-      'user': user,
-      'score': score
-    }
-    try {
-      const response = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
-        method: 'POST',
-        header: { 
-          'Content-Type': 'application/json',
-          'charset': 'UTF-8',
-        },
-        body: JSON.stringify(newPlayerScore),
-        mode: 'cors',
-      });
-      const resultArray = await response.json();
-      console.log(resultArray);
-      resultArray.push(newPlayerScore);
-    } catch (er) {
-      console.log(er);
-    }
-    return resultArray;
+    let res;
+
+    axios({
+      method: 'post',
+      url: `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`,
+      data: {
+        'user': user,
+        'score': score
+      }
+    })
+    .then((response) => {
+      console.log(response);
+      res = response;
+    }, (error) => {
+      console.log(error);
+    });
+    return res;
   };
 
-  return {  player, userName, getScores, setPlayerScore };
+  return {  userName, getScore, nameForScore, scoreForOver, getScores, setPlayerScore };
 })();
 
-export default API;
+export default scoreAndAPI;
