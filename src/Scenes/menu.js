@@ -25,22 +25,23 @@ class menuScene extends Phaser.Scene {
     this.add.image(640, 100, 'gameTitle');
 
     const text = this.add.text(555, 180, 'New Pilot', { color: '#fff', fontSize: '25px' });
+
     const form = `
       <form style="display: flex; border-radius: 15px; border: 2px solid #fff;">
         <input type="text" name="nameField" placeholder="Enter your name" style="font-size: 20px; font-family: Courier; width: 250px; border: none; background: transparent; color: #fff; padding-top: 5px; padding-left: 10px;">
 		    <input type="button" name="saveBtn" value="Go!" style="font-size: 18px; font-family: Courier; border-radius: 15px; background: #3f93df; border: none; padding: 10px 5px 5px 10px; margin-right: 0;">
       </form>
     `;
-    const element = this.add.dom(630, 250).createFromHTML(form);
+    const element = this.add.dom(600, 250).createFromHTML(form);
     element.addListener('click');
     element.on('click', function (event) {
       if (event.target.name === 'saveBtn') {
-        var inputUsername = this.getChildByName('nameField');
+        const inputUsername = this.getChildByName('nameField');
         if (inputUsername.value !== '') {
           this.removeListener('click');
           this.setVisible(false);
           const inputName = inputUsername.value;
-          text.setText(`Welcome ${inputName}!`);
+          text.setText(`Let's go, ${inputName}!`);
           scoreAndAPI.userName(inputName);
         } else {
           this.setVisible(true);
@@ -48,7 +49,7 @@ class menuScene extends Phaser.Scene {
       }
     });
 
-    this.btnPlay = this.add.sprite(620, 350, "sprBtnPlay");
+    this.btnPlay = this.add.sprite(620, 330, "sprBtnPlay");
     this.btnPlay.setInteractive();
     this.btnPlay.on("pointerover", function() {
       this.btnPlay.setTexture("sprBtnPlayDown");
@@ -66,7 +67,7 @@ class menuScene extends Phaser.Scene {
       this.scene.start("Game");
     }, this);
 
-    this.btnCommands = this.add.sprite(620, 450, "sprBtnCommands");
+    this.btnCommands = this.add.sprite(620, 400, "sprBtnCommands");
     this.btnCommands.setInteractive();
     this.btnCommands.on("pointerover", function() {
       this.btnCommands.setTexture("sprBtnCommandsDown");
@@ -84,7 +85,7 @@ class menuScene extends Phaser.Scene {
       this.scene.start("Commands");
     }, this);
 
-    this.btnScores = this.add.sprite(620, 550, "sprBtnScores");
+    this.btnScores = this.add.sprite(620, 470, "sprBtnScores");
     this.btnScores.setInteractive();
     this.btnScores.on("pointerover", function() {
       this.btnScores.setTexture("sprBtnScoresDown");

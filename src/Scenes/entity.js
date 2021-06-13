@@ -36,7 +36,7 @@ class Entity extends Phaser.GameObjects.Sprite {
 class Player extends Entity {
   constructor (scene, x, y, key) {
     super(scene, x, y, key, 'Player');
-    this.setData('speed', 200);
+    this.setData('speed', 250);
     this.play('player');
     this.setData("isShooting", false);
     this.setData("timerShootDelay", 10);

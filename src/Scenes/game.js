@@ -26,10 +26,11 @@ class gameScene extends Phaser.Scene {
 
   create () {
     const user = scoreAndAPI.nameForScore();
-    console.log(user);
     let score = 0;
     let whiteGCounter = 0;
     let blueGCounter = 0;
+    let whiteScore;
+    let blueScore;
 
     this.add.image(200, 0, 'galaxy');
 
@@ -40,12 +41,15 @@ class gameScene extends Phaser.Scene {
     blueGScore.displayHeight = 25;
     whiteGScore.displayWidth = 25;
     whiteGScore.displayHeight = 25;
-    this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
-    this.add.text(1190, 62, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    whiteScore = this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    blueScore = this.add.text(1190, 62, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
 
-    const gemsCounter = (whiteGCounter, blueGCounter) => {
-      this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
-      this.add.text(1190, 62, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    const gemsWCounter = (whiteGCounter) => {
+      whiteScore = this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    }
+
+    const gemsBCounter = (blueGCounter) => {
+      blueScore = this.add.text(1190, 62, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
     }
 
     this.anims.create({
@@ -74,7 +78,6 @@ class gameScene extends Phaser.Scene {
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
     this.playerLasers = this.add.group();
-    //event (act as a timer) which will spawn the enemies
     this.time.addEvent({
       delay: 800,
       callback: function() {
@@ -123,8 +126,8 @@ class gameScene extends Phaser.Scene {
 
     this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
       if (enemy) {
-        if (enemy.onDestroy() !== undefined) { //checks if the enemy is still active (and not destroyed)
-          enemy.onDestroy(); //destroys enemy if true
+        if (enemy.onDestroy() !== undefined) {
+          enemy.onDestroy();
         }
         enemy.explode(true);
         playerLaser.destroy();
@@ -134,39 +137,39 @@ class gameScene extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, this.gems, function(player, gem) {
       let points;
-      if (!player.getData("isDead") && gem.width === 40) {
+      if (gem instanceof BlueGem) {
         gem.destroy();
         points = 30;
         blueGCounter += 1;
-        gemsCounter(whiteGCounter, blueGCounter);
+        blueScore.destroy();
+        gemsBCounter(blueGCounter);
       } else {
         gem.destroy();
         points = 50;
         whiteGCounter += 1;
-        gemsCounter(whiteGCounter, blueGCounter);
+        whiteScore.destroy();
+        gemsWCounter(whiteGCounter);
       }
       score += points;
     });
 
-    this.physics.add.collider(this.player, this.enemies, function(player, enemy) {
+    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
       if (!player.getData("isDead") && !enemy.getData("isDead")) {
-        console.log(score);
-        player.explode(true);
         enemy.explode(true);
-        scoreAndAPI.setPlayerScore(user, score);
+        player.explode(false);
         scoreAndAPI.getScore(score);
-        // player.onDestroy();
+        player.onDestroy();
+        scoreAndAPI.setPlayerScore(user, score);
       }
     });
 
-    this.physics.add.collider(this.player, this.enemyLasers, function(player, laser) {
+    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
       if (!player.getData("isDead") && !laser.getData("isDead")) {
-        console.log(score);
         laser.destroy();
-        player.explode(true);
-        scoreAndAPI.setPlayerScore(user, score);
+        player.explode(false);
         scoreAndAPI.getScore(score);
-        //player.onDestroy();
+        player.onDestroy();
+        scoreAndAPI.setPlayerScore(user, score);
       }
     });
 

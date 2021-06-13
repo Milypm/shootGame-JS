@@ -27,7 +27,7 @@ class gameOverScene extends Phaser.Scene {
     };
 
     this.add.image(640, 200, 'gameOver');
-    this.add.text(425, 280, `Your Score: ${score}`, { color: '#fff', fontSize: '40px' });
+    this.add.text(425, 280, `Your Score: ${score} pts`, { color: '#fff', fontSize: '40px' });
 
     this.btnMenu = this.add.sprite(440, 440, "sprBtnMenu");
     this.btnMenu.setInteractive();

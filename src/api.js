@@ -22,15 +22,36 @@ const scoreAndAPI = (() => {
   };
 
   const getScores = async () => {
-    let returnValue;
+    let spots;
+    let scores = [];
+    let topScores;
+    let scoresIndex = [];
+    let topWinners = [];
+
     try {
       const storedScores = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, { mode: 'cors' });
-      returnValue = await storedScores.json();
-      console.log(returnValue);
+      const returnValue = await storedScores.json();
+      const arr = returnValue.result;
+
+      arr.forEach(obj => { scores.push(obj.score) });
+      (returnValue.length < 5) ? spots = returnValue.length : spots = 5;
+      topScores = [...scores].sort((a,b) => b-a).slice(0, spots);
+
+      arr.forEach((obj, index) => {
+        topScores.forEach(num => {
+          if (obj.score === num) { scoresIndex.push(index) }
+        })
+      })
+      
+      arr.forEach((obj, index) => {
+        scoresIndex.forEach(ind => {
+          if (index === ind) { topWinners.push(obj) }
+        })
+      })
     } catch (er) {
       console.log(er);
     }
-    return returnValue;
+    return topWinners;
   };
 
   const setPlayerScore = async (user, score) => {
