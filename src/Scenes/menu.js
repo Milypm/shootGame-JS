@@ -1,6 +1,6 @@
 import 'phaser';
 import scoreAndAPI from '../api';
-import config from '../index';
+//import config from '../index';
 
 class menuScene extends Phaser.Scene {
   constructor () {
@@ -22,6 +22,7 @@ class menuScene extends Phaser.Scene {
       btnOver: this.sound.add("sndBtnOver"),
       btnDown: this.sound.add("sndBtnDown")
     };
+
     this.add.image(640, 100, 'gameTitle');
 
     const text = this.add.text(555, 180, 'New Pilot', { color: '#fff', fontSize: '25px' });
@@ -104,12 +105,12 @@ class menuScene extends Phaser.Scene {
     }, this);
   }
 
-  centerButton (gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(config.width/2, config.height/2 - offset * 100, config.width, config.height)
-    );
-  }
+  // centerButton (gameObject, offset = 0) {
+  //   Phaser.Display.Align.In.Center(
+  //     gameObject,
+  //     this.add.zone(config.width/2, config.height/2 - offset * 100, config.width, config.height)
+  //   );
+  // }
 };
 
 export default menuScene;

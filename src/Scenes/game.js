@@ -21,7 +21,6 @@ class gameScene extends Phaser.Scene {
     this.load.audio('sndExplode0', './assets/sound/sndExplode0.wav');
     this.load.audio('sndExplode1', './assets/sound/sndExplode1.wav');
     this.load.audio('Laser', './assets/sound/laser.mp3');
-    this.load.audio('gameOver', './assets/sound/gameOver.mp3');
   }
 
   create () {
@@ -159,6 +158,7 @@ class gameScene extends Phaser.Scene {
         player.explode(false);
         scoreAndAPI.getScore(score);
         player.onDestroy();
+        (score === 0) ? score = '0' : score = score;
         scoreAndAPI.setPlayerScore(user, score);
       }
     });
@@ -169,6 +169,7 @@ class gameScene extends Phaser.Scene {
         player.explode(false);
         scoreAndAPI.getScore(score);
         player.onDestroy();
+        (score === 0) ? score = '0' : score = score;
         scoreAndAPI.setPlayerScore(user, score);
       }
     });

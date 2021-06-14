@@ -22,7 +22,11 @@ const config = {
   parent: 'phaser-container',
   dom: {
     createContainer: true
-  }
+  },
+  audio: {
+    disableWebAudio: true,
+    noAudio: false
+  },
 };
 
 class Game extends Phaser.Game {
@@ -35,7 +39,7 @@ class Game extends Phaser.Game {
     this.scene.add('Game', gameScene);
     this.scene.add('GameOver', gameOverScene);
     this.scene.add('Scores', scoresScene);
-    this.scene.start('Menu');
+    this.scene.start('Boot');
   }
 }
 

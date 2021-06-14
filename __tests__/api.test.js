@@ -1,0 +1,1 @@
+import scoreAndAPI from '../src/api';

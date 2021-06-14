@@ -9,14 +9,8 @@ class gameOverScene extends Phaser.Scene {
     this.load.image('gameOver', './assets/images/gameover!.png');
     this.load.image('sprBtnMenu', './assets/images/sprBtnMenu.png');
     this.load.image('sprBtnMenuDown', './assets/images/sprBtnMenuDown.png');
-    this.load.image('sprBtnMenu', './assets/images/sprBtnMenu.png');
-    this.load.image('sprBtnMenuDown', './assets/images/sprBtnMenuDown.png');
     this.load.image('sprBtnRestart', './assets/images/sprBtnRestart.png');
     this.load.image('sprBtnRestartDown', './assets/images/sprBtnRestartDown.png');
-    this.load.image('sprBtnScores', './assets/images/sprBtnScores.png');
-    this.load.image('sprBtnScoresDown', './assets/images/sprBtnScoresDown.png');
-    this.load.audio("sndBtnOver", "./assets/sound/sndBtnOver.wav");
-    this.load.audio("sndBtnDown", "./assets/sound/sndBtnDown.wav");
   }
   create () {
     const score = scoreAndAPI.scoreForOver();

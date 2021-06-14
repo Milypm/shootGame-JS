@@ -31,18 +31,18 @@ class scoresScene extends Phaser.Scene {
       }
       
       const list = `
-      <ol style="display: flex; flex-direction: column; align-items: flex-start; color: white; font-size: 25px; font-family: Courier;">
+      <ul style="display: flex; flex-direction: column; align-items: flex-start; list-style-type:none; color: white; font-size: 25px; font-family: Courier;">
         <li>${arr[0]}, ${arr[1]} pts</li>
         <li>${arr[2]}, ${arr[3]} pts</li>
         <li>${arr[4]}, ${arr[5]} pts</li>
         <li>${arr[6]}, ${arr[7]} pts</li>
         <li>${arr[8]}, ${arr[9]} pts</li>
-      </ol>
+      </ul>
     `;
-    this.add.dom(640, 360).createFromHTML(list);
+    this.add.dom(610, 360).createFromHTML(list);
     });  
 
-    this.btnMenu = this.add.sprite(640, 500, "sprBtnMenu");
+    this.btnMenu = this.add.sprite(620, 500, "sprBtnMenu");
     this.btnMenu.setInteractive();
     this.btnMenu.on("pointerover", function() {
       this.btnMenu.setTexture("sprBtnMenuDown");
