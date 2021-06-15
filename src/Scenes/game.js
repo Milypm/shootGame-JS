@@ -35,26 +35,26 @@ class gameScene extends Phaser.Scene {
     this.add.image(200, 0, 'galaxy');
 
     this.add.text(1100, 15, `Pilot: ${user}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
-    pointsC = this.add.text(1100, 30, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
-    const whiteGScore = this.add.image(1170, 60, 'whiteGem');
-    const blueGScore = this.add.image(1170, 85, 'blueGem');
-    blueGScore.displayWidth = 25;
-    blueGScore.displayHeight = 25;
-    whiteGScore.displayWidth = 25;
-    whiteGScore.displayHeight = 25;
-    whiteScore = this.add.text(1190, 52, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
-    blueScore = this.add.text(1190, 77, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    pointsC = this.add.text(1100, 40, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
+    const whiteGScore = this.add.image(1170, 75, 'whiteGem');
+    const blueGScore = this.add.image(1170, 100, 'blueGem');
+    blueGScore.displayWidth = 30;
+    blueGScore.displayHeight = 30;
+    whiteGScore.displayWidth = 30;
+    whiteGScore.displayHeight = 30;
+    whiteScore = this.add.text(1190, 65, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    blueScore = this.add.text(1190, 92, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
 
     const pointsCounter = (score) => {
-      pointsC = this.add.text(1100, 25, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
+      pointsC = this.add.text(1100, 40, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
     }
 
     const gemsWCounter = (whiteGCounter) => {
-      whiteScore = this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+      whiteScore = this.add.text(1190, 65, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
     }
 
     const gemsBCounter = (blueGCounter) => {
-      blueScore = this.add.text(1190, 62, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+      blueScore = this.add.text(1190, 92, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
     }
 
     this.anims.create({
@@ -162,25 +162,28 @@ class gameScene extends Phaser.Scene {
       pointsCounter(score);
     });
 
+    let hit = false;
+
     this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
-      if (!player.getData("isDead") && !enemy.getData("isDead")) {
+      if (!player.getData("isDead") && !enemy.getData("isDead") && hit === false) {
         enemy.explode(true);
         player.explode(false);
-        scoreAndAPI.getScore(score);
         player.onDestroy();
         (score === 0) ? score = '0' : score = score;
-        scoreAndAPI.setPlayerScore(user, score);
+        scoreAndAPI.setPlayerScore(user, 878);
+        scoreAndAPI.getScore(score);
       }
     });
 
     this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
       if (!player.getData("isDead") && !laser.getData("isDead")) {
+        hit = true;
         laser.destroy();
         player.explode(false);
-        scoreAndAPI.getScore(score);
         player.onDestroy();
         (score === 0) ? score = '0' : score = score;
-        scoreAndAPI.setPlayerScore(user, score);
+        scoreAndAPI.setPlayerScore(user, 878);
+        scoreAndAPI.getScore(score);
       }
     });
 

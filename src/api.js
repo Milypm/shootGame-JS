@@ -2,7 +2,7 @@ import axios from 'axios';
 import "regenerator-runtime";
 
 const scoreAndAPI = (() => {
-  let gameId = '6LD5ueCnBulczxTvtbTL';
+  let gameId = 'YzX7p2UKMPvV8zOmUwF4';
   let player;
   let score;
 
@@ -37,7 +37,7 @@ const scoreAndAPI = (() => {
       arr.forEach(obj => { scores.push(obj.score) });
       (arr.length < 5) ? spots = arr.length : spots = 5;
       topScores = [...scores].sort((a,b) => b-a).slice(0, spots);
-
+      
       topScores.forEach((num) => {
         const index = scores.indexOf(num);
         scoresIndex.push(index);
