@@ -5,8 +5,8 @@ class commandsScene extends Phaser.Scene {
     super('Commands');
   }
   preload () {
-    this.load.image('sprBtnBack', './assets/images/sprBtnBack.png');
-    this.load.image('sprBtnBackDown', './assets/images/sprBtnBackDown.png');
+    this.load.image('sprBtnBack', '../src/assets/images/sprBtnBack.png');
+    this.load.image('sprBtnBackDown', '../src/assets/images/sprBtnBackDown.png');
   }
   create () {
     this.sfx = {
