@@ -43,5 +43,6 @@ class Game extends Phaser.Game {
   }
 }
 
+
 window.game = new Game();
 export default config;

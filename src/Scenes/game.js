@@ -26,6 +26,7 @@ class gameScene extends Phaser.Scene {
   create () {
     const user = scoreAndAPI.nameForScore();
     let score = 0;
+    let pointsC;
     let whiteGCounter = 0;
     let blueGCounter = 0;
     let whiteScore;
@@ -34,14 +35,19 @@ class gameScene extends Phaser.Scene {
     this.add.image(200, 0, 'galaxy');
 
     this.add.text(1100, 15, `Pilot: ${user}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
-    const whiteGScore = this.add.image(1170, 45, 'whiteGem');
-    const blueGScore = this.add.image(1170, 70, 'blueGem');
+    pointsC = this.add.text(1100, 30, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
+    const whiteGScore = this.add.image(1170, 60, 'whiteGem');
+    const blueGScore = this.add.image(1170, 85, 'blueGem');
     blueGScore.displayWidth = 25;
     blueGScore.displayHeight = 25;
     whiteGScore.displayWidth = 25;
     whiteGScore.displayHeight = 25;
-    whiteScore = this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
-    blueScore = this.add.text(1190, 62, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    whiteScore = this.add.text(1190, 52, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+    blueScore = this.add.text(1190, 77, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
+
+    const pointsCounter = (score) => {
+      pointsC = this.add.text(1100, 25, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
+    }
 
     const gemsWCounter = (whiteGCounter) => {
       whiteScore = this.add.text(1190, 37, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
@@ -131,6 +137,8 @@ class gameScene extends Phaser.Scene {
         enemy.explode(true);
         playerLaser.destroy();
         score += 15;
+        pointsC.destroy();
+        pointsCounter(score);
       }
     });
 
@@ -150,6 +158,8 @@ class gameScene extends Phaser.Scene {
         gemsWCounter(whiteGCounter);
       }
       score += points;
+      pointsC.destroy();
+      pointsCounter(score);
     });
 
     this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {

@@ -19,7 +19,7 @@ class scoresScene extends Phaser.Scene {
     };
 
     this.add.image(640, 200, 'topScores');
-    
+
     scoreAndAPI.getScores().then((data) => {
       for (let i = 0; i < 5; i++) {
         if (data[i] !== undefined) {
@@ -29,15 +29,15 @@ class scoresScene extends Phaser.Scene {
           arr.push('...');
         }
       }
-      
+
       const list = `
-      <ul style="display: flex; flex-direction: column; align-items: flex-start; list-style-type:none; color: white; font-size: 25px; font-family: Courier;">
-        <li>${arr[0]}, ${arr[1]} pts</li>
-        <li>${arr[2]}, ${arr[3]} pts</li>
-        <li>${arr[4]}, ${arr[5]} pts</li>
-        <li>${arr[6]}, ${arr[7]} pts</li>
-        <li>${arr[8]}, ${arr[9]} pts</li>
-      </ul>
+      <ol style="display: flex; flex-direction: column; align-items: flex-start; color: white; font-size: 25px; font-family: Courier;">
+        <li>${arr[0]} --- ${arr[1]} pts</li>
+        <li>${arr[2]} --- ${arr[3]} pts</li>
+        <li>${arr[4]} --- ${arr[5]} pts</li>
+        <li>${arr[6]} --- ${arr[7]} pts</li>
+        <li>${arr[8]} --- ${arr[9]} pts</li>
+      </ol>
     `;
     this.add.dom(610, 360).createFromHTML(list);
     });  
