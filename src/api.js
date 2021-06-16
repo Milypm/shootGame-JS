@@ -1,8 +1,10 @@
+/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
+
 import axios from 'axios';
-import "regenerator-runtime";
+import 'regenerator-runtime';
 
 const scoreAndAPI = (() => {
-  let gameId = 'YzX7p2UKMPvV8zOmUwF4';
+  const gameId = 'hfi36B8c4IfZyPuuj73T';
   let player;
   let score;
 
@@ -10,38 +12,34 @@ const scoreAndAPI = (() => {
     player = name;
   };
 
-  const nameForScore = () => {
-    return player;
-  };
+  const nameForScore = () => player;
 
   const getScore = (curScore) => {
     score = curScore;
   };
 
-  const scoreForOver = () => {
-    return score;
-  };
+  const scoreForOver = () => score;
 
   const getScores = async () => {
     let spots;
-    let scores = [];
+    const scores = [];
     let topScores;
-    let scoresIndex = [];
-    let topWinners = [];
+    const scoresIndex = [];
+    const topWinners = [];
 
     try {
       const storedScores = await fetch(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, { mode: 'cors' });
       const returnValue = await storedScores.json();
       const arr = returnValue.result;
 
-      arr.forEach(obj => { scores.push(obj.score) });
-      (arr.length < 5) ? spots = arr.length : spots = 5;
-      topScores = [...scores].sort((a,b) => b-a).slice(0, spots);
-      
+      arr.forEach((obj) => { scores.push(obj.score); });
+      spots = (arr.length < 5) ? arr.length : 5;
+      topScores = [...scores].sort((a, b) => b - a).slice(0, spots);
+
       topScores.forEach((num) => {
         const index = scores.indexOf(num);
         scoresIndex.push(index);
-      })
+      });
 
       for (let i = 0; i < 5; i++) {
         const topIndex = scoresIndex[i];
@@ -60,9 +58,9 @@ const scoreAndAPI = (() => {
         method: 'post',
         url: `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`,
         data: {
-          'user': user,
-          'score': score
-        }
+          user,
+          score,
+        },
       });
       getVal = await returnVal.json();
     } catch (error) {
@@ -71,7 +69,9 @@ const scoreAndAPI = (() => {
     return getVal;
   };
 
-  return { userName, getScore, nameForScore, scoreForOver, getScores, setPlayerScore };
+  return {
+    userName, getScore, nameForScore, scoreForOver, getScores, setPlayerScore,
+  };
 })();
 
 export default scoreAndAPI;

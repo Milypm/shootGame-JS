@@ -1,10 +1,11 @@
-import 'phaser';
+import Phaser from 'phaser';
 
-class bootScene extends Phaser.Scene {
-  constructor () {
+class BootScene extends Phaser.Scene {
+  constructor() {
     super('Boot');
   }
-  preload () {
+
+  preload() {
     this.load.image('gameTitle', '../src/assets/images/game-title.png');
     this.load.path = '../src/assets/spaceship-frames/';
     this.load.image('frame0', 'frame0.png');
@@ -24,9 +25,10 @@ class bootScene extends Phaser.Scene {
     this.load.image('frame14', 'frame14.png');
     this.load.image('frame15', 'frame15.png');
   }
-  create () {
+
+  create() {
     this.scene.start('Preloader');
   }
-};
+}
 
-export default bootScene;
+export default BootScene;

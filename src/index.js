@@ -1,11 +1,11 @@
-import 'phaser';
-import bootScene from './Scenes/boot';
-import preloaderScene from './Scenes/preloader';
-import menuScene from './Scenes/menu';
-import commandsScene from './Scenes/commands';
-import gameScene from './Scenes/game';
-import gameOverScene from './Scenes/gameover';
-import scoresScene from './Scenes/scores';
+import Phaser from 'phaser';
+import BootScene from './Scenes/boot';
+import PreloaderScene from './Scenes/preloader';
+import MenuScene from './Scenes/menu';
+import CommandsScene from './Scenes/commands';
+import GameScene from './Scenes/game';
+import GameOverScene from './Scenes/gameover';
+import ScoresScene from './Scenes/scores';
 
 const config = {
   type: Phaser.AUTO,
@@ -14,35 +14,34 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-        gravity: { y: 300 }
-    }
+      gravity: { y: 300 },
+    },
   },
   pixelArt: true,
   roundPixels: true,
   parent: 'phaser-container',
   dom: {
-    createContainer: true
+    createContainer: true,
   },
   audio: {
     disableWebAudio: true,
-    noAudio: false
+    noAudio: false,
   },
 };
 
 class Game extends Phaser.Game {
-  constructor () {
+  constructor() {
     super(config);
-    this.scene.add('Boot', bootScene);
-    this.scene.add('Preloader', preloaderScene);
-    this.scene.add('Menu', menuScene);
-    this.scene.add('Commands', commandsScene);
-    this.scene.add('Game', gameScene);
-    this.scene.add('GameOver', gameOverScene);
-    this.scene.add('Scores', scoresScene);
-    this.scene.start('Menu');
+    this.scene.add('Boot', BootScene);
+    this.scene.add('Preloader', PreloaderScene);
+    this.scene.add('Menu', MenuScene);
+    this.scene.add('Commands', CommandsScene);
+    this.scene.add('Game', GameScene);
+    this.scene.add('GameOver', GameOverScene);
+    this.scene.add('Scores', ScoresScene);
+    this.scene.start('Boot');
   }
 }
-
 
 window.game = new Game();
 export default config;

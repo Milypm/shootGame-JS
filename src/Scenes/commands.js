@@ -1,24 +1,26 @@
-import 'phaser';
+import Phaser from 'phaser';
 
-class commandsScene extends Phaser.Scene {
-  constructor () {
+class CommandsScene extends Phaser.Scene {
+  constructor() {
     super('Commands');
   }
-  preload () {
+
+  preload() {
     this.load.image('sprBtnBack', '../src/assets/images/sprBtnBack.png');
     this.load.image('sprBtnBackDown', '../src/assets/images/sprBtnBackDown.png');
   }
-  create () {
+
+  create() {
     this.sfx = {
-      btnOver: this.sound.add("sndBtnOver"),
-      btnDown: this.sound.add("sndBtnDown")
+      btnOver: this.sound.add('sndBtnOver'),
+      btnDown: this.sound.add('sndBtnDown'),
     };
 
     const div = `
       <div style="display: flex; flex-direction: column; align-items: flex-start; color: white; font-size: 20px; font-family: Courier;">
         <div style="display: flex">  
           <p>> Use the arrow keys for moving the spaceship: UP, DOWN, LEFT, RIGHT</p>
-          <img src="./assets/images/move-keys.png" style="width: 90px; height: 60px; margin-left: 20px">
+          <img src="../src/assets/images/move-keys.png" style="width: 90px; height: 60px; margin-left: 20px">
         </div>
         <p>> Avoid collisions with enemies and their lasers</p>
         <p>> Use the SPACEBAR for shooting enemies and win points!</p>
@@ -27,24 +29,24 @@ class commandsScene extends Phaser.Scene {
     `;
     this.add.dom(640, 200).createFromHTML(div);
 
-    this.btnBack = this.add.sprite(300, 400, "sprBtnBack");
+    this.btnBack = this.add.sprite(300, 400, 'sprBtnBack');
     this.btnBack.setInteractive();
-    this.btnBack.on("pointerover", function() {
-      this.btnBack.setTexture("sprBtnBackDown");
+    this.btnBack.on('pointerover', () => {
+      this.btnBack.setTexture('sprBtnBackDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnBack.on("pointerout", function() {
-      this.setTexture("sprBtnBack");
+    this.btnBack.on('pointerout', () => {
+      this.setTexture('sprBtnBack');
     });
-    this.btnBack.on("pointerdown", function() {
-      this.btnBack.setTexture("sprBtnBackDown");
+    this.btnBack.on('pointerdown', () => {
+      this.btnBack.setTexture('sprBtnBackDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnBack.on("pointerup", function() {
-      this.btnBack.setTexture("sprBtnBack");
-      this.scene.start("Menu");
+    this.btnBack.on('pointerup', () => {
+      this.btnBack.setTexture('sprBtnBack');
+      this.scene.start('Menu');
     }, this);
   }
-};
+}
 
-export default commandsScene;
+export default CommandsScene;

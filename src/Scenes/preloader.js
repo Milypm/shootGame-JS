@@ -1,10 +1,11 @@
-import 'phaser';
+import Phaser from 'phaser';
 
-class preloaderScene extends Phaser.Scene {
-  constructor () {
+class PreloaderScene extends Phaser.Scene {
+  constructor() {
     super('Preloader');
   }
-  preload () {
+
+  preload() {
     this.add.image(640, 100, 'gameTitle');
     this.anims.create({
       key: 'gif',
@@ -27,7 +28,7 @@ class preloaderScene extends Phaser.Scene {
         { key: 'frame15', duration: 50 },
       ],
       frameRate: 16,
-      repeat: -1
+      repeat: -1,
     });
     const gifSprite = this.add.sprite(640, 370, 'frame0');
     gifSprite.displayWidth = 400;
@@ -36,20 +37,20 @@ class preloaderScene extends Phaser.Scene {
 
     this.add.text(540, 600, 'Loading game...', { color: '#fff', fontSize: '25px ', fontStyle: 'bold' });
 
-    this.load.on('complete', function () {
+    this.load.on('complete', () => {
       this.ready();
-    }.bind(this));
+    });
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
   }
 
-  ready () {
+  ready() {
     this.scene.start('Menu');
-    this.readyCount++;
+    this.readyCount += 1;
     if (this.readyCount === 2) {
       this.scene.start('Menu');
     }
   }
-};
+}
 
-export default preloaderScene;
+export default PreloaderScene;

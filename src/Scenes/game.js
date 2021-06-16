@@ -1,12 +1,17 @@
-import 'phaser';
-import scoreAndAPI from '../api';
-import { Player, Enemy, BlueGem, WhiteGem } from './entity';
+/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
-class gameScene extends Phaser.Scene {
-  constructor () {
+import Phaser from 'phaser';
+import scoreAndAPI from '../api';
+import {
+  Player, Enemy, BlueGem, WhiteGem,
+} from './entity';
+
+class GameScene extends Phaser.Scene {
+  constructor() {
     super('Game');
   }
-  preload () {
+
+  preload() {
     this.load.image('galaxy', '../src/assets/images/galaxy.png');
     this.load.image('player', '../src/assets/images/player.png');
     this.load.image('enemy', '../src/assets/images/Enemy.png');
@@ -16,14 +21,14 @@ class gameScene extends Phaser.Scene {
     this.load.image('whiteGem', '../src/assets/images/white-gem.png');
     this.load.spritesheet('sprExplosion', '../src/assets/images/sprExplosion.png', {
       frameWidth: 32,
-      frameHeight: 32
+      frameHeight: 32,
     });
     this.load.audio('sndExplode0', '../src/assets/sound/sndExplode0.wav');
     this.load.audio('sndExplode1', '../src/assets/sound/sndExplode1.wav');
     this.load.audio('Laser', '../src/assets/sound/laser.mp3');
   }
 
-  create () {
+  create() {
     const user = scoreAndAPI.nameForScore();
     let score = 0;
     let pointsC;
@@ -47,36 +52,36 @@ class gameScene extends Phaser.Scene {
 
     const pointsCounter = (score) => {
       pointsC = this.add.text(1100, 40, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
-    }
+    };
 
     const gemsWCounter = (whiteGCounter) => {
       whiteScore = this.add.text(1190, 65, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
-    }
+    };
 
     const gemsBCounter = (blueGCounter) => {
       blueScore = this.add.text(1190, 92, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
-    }
+    };
 
     this.anims.create({
       key: 'sprExplosion',
       frames: this.anims.generateFrameNumbers('sprExplosion'),
       frameRate: 20,
-      repeat: 0
+      repeat: 0,
     });
 
     this.sfx = {
       explosions: [
         this.sound.add('sndExplode0'),
-        this.sound.add('sndExplode1')
+        this.sound.add('sndExplode1'),
       ],
-      laser: this.sound.add('Laser')
+      laser: this.sound.add('Laser'),
     };
 
     this.player = new Player(
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'player'
+      'player',
     );
 
     this.gems = this.add.group();
@@ -85,51 +90,51 @@ class gameScene extends Phaser.Scene {
     this.playerLasers = this.add.group();
     this.time.addEvent({
       delay: 800,
-      callback: function() {
+      callback() {
         const enemy = new Enemy(
           this,
           Phaser.Math.Between(0, this.game.config.width),
-          0
+          0,
         );
         this.enemies.add(enemy);
       },
       callbackScope: this,
-      loop: true
+      loop: true,
     });
 
     this.time.addEvent({
       delay: 1500,
-      callback: function() {
+      callback() {
         const blueG = new BlueGem(
           this,
           Phaser.Math.Between(0, this.game.config.width),
-          0
+          0,
         );
         blueG.displayWidth = 40;
         blueG.displayHeight = 40;
         this.gems.add(blueG);
       },
       callbackScope: this,
-      loop: true
+      loop: true,
     });
 
     this.time.addEvent({
       delay: 1700,
-      callback: function() {
+      callback() {
         const whiteG = new WhiteGem(
           this,
           Phaser.Math.Between(0, this.game.config.width),
-          0
+          0,
         );
         whiteG.displayWidth = 45;
         whiteG.displayHeight = 45;
         this.gems.add(whiteG);
       },
       callbackScope: this,
-      loop: true
+      loop: true,
     });
 
-    this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
+    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
         if (enemy.onDestroy() !== undefined) {
           enemy.onDestroy();
@@ -142,7 +147,7 @@ class gameScene extends Phaser.Scene {
       }
     });
 
-    this.physics.add.overlap(this.player, this.gems, function(player, gem) {
+    this.physics.add.overlap(this.player, this.gems, (player, gem) => {
       let points;
       if (gem instanceof BlueGem) {
         gem.destroy();
@@ -164,25 +169,25 @@ class gameScene extends Phaser.Scene {
 
     let hit = false;
 
-    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
-      if (!player.getData("isDead") && !enemy.getData("isDead") && hit === false) {
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead') && !enemy.getData('isDead') && hit === false) {
         enemy.explode(true);
         player.explode(false);
         player.onDestroy();
-        (score === 0) ? score = '0' : score = score;
-        scoreAndAPI.setPlayerScore(user, 878);
+        score = (score === 0) ? '0' : score;
+        scoreAndAPI.setPlayerScore(user, score);
         scoreAndAPI.getScore(score);
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
-      if (!player.getData("isDead") && !laser.getData("isDead")) {
+    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+      if (!player.getData('isDead') && !laser.getData('isDead')) {
         hit = true;
         laser.destroy();
         player.explode(false);
         player.onDestroy();
-        (score === 0) ? score = '0' : score = score;
-        scoreAndAPI.setPlayerScore(user, 878);
+        score = (score === 0) ? '0' : score;
+        scoreAndAPI.setPlayerScore(user, score);
         scoreAndAPI.getScore(score);
       }
     });
@@ -194,38 +199,31 @@ class gameScene extends Phaser.Scene {
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
   }
 
-  counterWhite = (num) => {
-    return num;
-  }
+  counterWhite = (num) => num
 
-  counterBlue = (num) => {
-    return num;
-  }
+  counterBlue = (num) => num
 
-  update () {
-    if (!this.player.getData("isDead")) {
+  update() {
+    if (!this.player.getData('isDead')) {
       this.player.update();
 
       if (this.keyUp.isDown) {
         this.player.moveUp();
-      }
-      else if (this.keyDown.isDown) {
+      } else if (this.keyDown.isDown) {
         this.player.moveDown();
       }
 
       if (this.keyLeft.isDown) {
         this.player.moveLeft();
-      }
-      else if (this.keyRight.isDown) {
+      } else if (this.keyRight.isDown) {
         this.player.moveRight();
       }
 
       if (this.keySpace.isDown) {
-        this.player.setData("isShooting", true);
-      }
-      else {
-        this.player.setData("timerShootTick", this.player.getData("timerShootDelay") - 1);
-        this.player.setData("isShooting", false);
+        this.player.setData('isShooting', true);
+      } else {
+        this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+        this.player.setData('isShooting', false);
       }
     } else {
       this.player.onDestroy();
@@ -236,10 +234,10 @@ class gameScene extends Phaser.Scene {
 
       enemy.update();
 
-      if (enemy.x < -enemy.displayWidth ||
-        enemy.x > this.game.config.width + enemy.displayWidth ||
-        enemy.y < -enemy.displayHeight * 4 ||
-        enemy.y > this.game.config.height + enemy.displayHeight) {
+      if (enemy.x < -enemy.displayWidth
+        || enemy.x > this.game.config.width + enemy.displayWidth
+        || enemy.y < -enemy.displayHeight * 4
+        || enemy.y > this.game.config.height + enemy.displayHeight) {
         if (enemy) {
           if (enemy.onDestroy !== undefined) {
             enemy.onDestroy();
@@ -253,10 +251,10 @@ class gameScene extends Phaser.Scene {
       const laser = this.enemyLasers.getChildren()[i];
       laser.update();
 
-      if (laser.x < -laser.displayWidth ||
-        laser.x > this.game.config.width + laser.displayWidth ||
-        laser.y < -laser.displayHeight * 4 ||
-        laser.y > this.game.config.height + laser.displayHeight) {
+      if (laser.x < -laser.displayWidth
+        || laser.x > this.game.config.width + laser.displayWidth
+        || laser.y < -laser.displayHeight * 4
+        || laser.y > this.game.config.height + laser.displayHeight) {
         if (laser) {
           laser.destroy();
         }
@@ -267,16 +265,16 @@ class gameScene extends Phaser.Scene {
       const laser = this.playerLasers.getChildren()[i];
       laser.update();
 
-      if (laser.x < -laser.displayWidth ||
-        laser.x > this.game.config.width + laser.displayWidth ||
-        laser.y < -laser.displayHeight * 4 ||
-        laser.y > this.game.config.height + laser.displayHeight) {
+      if (laser.x < -laser.displayWidth
+        || laser.x > this.game.config.width + laser.displayWidth
+        || laser.y < -laser.displayHeight * 4
+        || laser.y > this.game.config.height + laser.displayHeight) {
         if (laser) {
           laser.destroy();
         }
       }
     }
   }
-};
+}
 
-export default gameScene;
+export default GameScene;
