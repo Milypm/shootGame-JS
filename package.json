@@ -5,9 +5,11 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "webpack",
-    "start": "node server.js",
-    "heroku-postbuild": "webpack -p"
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch",
+    "serve": "webpack serve",
+    "test": "jest",
+    "watch": "jest --watch *.js"
   },
   "repository": {
     "type": "git",
