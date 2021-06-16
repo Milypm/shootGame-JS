@@ -48,18 +48,18 @@ class ScoresScene extends Phaser.Scene {
 
     this.btnMenu = this.add.sprite(620, 500, 'sprBtnMenu');
     this.btnMenu.setInteractive();
-    this.btnMenu.on('pointerover', () => {
+    this.btnMenu.on('pointerover', function () {
       this.btnMenu.setTexture('sprBtnMenuDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnMenu.on('pointerout', () => {
+    this.btnMenu.on('pointerout', function () {
       this.setTexture('sprBtnMenu');
     });
-    this.btnMenu.on('pointerdown', () => {
+    this.btnMenu.on('pointerdown', function () {
       this.btnMenu.setTexture('sprBtnMenuDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnMenu.on('pointerup', () => {
+    this.btnMenu.on('pointerup', function () {
       this.btnMenu.setTexture('sprBtnMenu');
       this.scene.start('Menu');
     }, this);

@@ -37,7 +37,7 @@ class MenuScene extends Phaser.Scene {
     `;
     const element = this.add.dom(600, 250).createFromHTML(form);
     element.addListener('click');
-    element.on('click', (event) => {
+    element.on('click', function (event) {
       if (event.target.name === 'saveBtn') {
         const inputUsername = this.getChildByName('nameField');
         if (inputUsername.value !== '') {
@@ -54,54 +54,54 @@ class MenuScene extends Phaser.Scene {
 
     this.btnPlay = this.add.sprite(620, 330, 'sprBtnPlay');
     this.btnPlay.setInteractive();
-    this.btnPlay.on('pointerover', () => {
+    this.btnPlay.on('pointerover', function () {
       this.btnPlay.setTexture('sprBtnPlayDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnPlay.on('pointerout', () => {
+    this.btnPlay.on('pointerout', function () {
       this.setTexture('sprBtnPlay');
     });
-    this.btnPlay.on('pointerdown', () => {
+    this.btnPlay.on('pointerdown', function () {
       this.btnPlay.setTexture('sprBtnPlayDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnPlay.on('pointerup', () => {
+    this.btnPlay.on('pointerup', function () {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('Game');
     }, this);
 
     this.btnCommands = this.add.sprite(620, 400, 'sprBtnCommands');
     this.btnCommands.setInteractive();
-    this.btnCommands.on('pointerover', () => {
+    this.btnCommands.on('pointerover', function () {
       this.btnCommands.setTexture('sprBtnCommandsDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnCommands.on('pointerout', () => {
+    this.btnCommands.on('pointerout', function () {
       this.setTexture('sprBtnCommands');
     });
-    this.btnCommands.on('pointerdown', () => {
+    this.btnCommands.on('pointerdown', function () {
       this.btnCommands.setTexture('sprBtnCommandsDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnCommands.on('pointerup', () => {
+    this.btnCommands.on('pointerup', function () {
       this.btnCommands.setTexture('sprBtnCommands');
       this.scene.start('Commands');
     }, this);
 
     this.btnScores = this.add.sprite(620, 470, 'sprBtnScores');
     this.btnScores.setInteractive();
-    this.btnScores.on('pointerover', () => {
+    this.btnScores.on('pointerover', function () {
       this.btnScores.setTexture('sprBtnScoresDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnScores.on('pointerout', () => {
+    this.btnScores.on('pointerout', function () {
       this.setTexture('sprBtnScores');
     });
-    this.btnScores.on('pointerdown', () => {
+    this.btnScores.on('pointerdown', function () {
       this.btnScores.setTexture('sprBtnScoresDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnScores.on('pointerup', () => {
+    this.btnScores.on('pointerup', function () {
       this.btnScores.setTexture('sprBtnScores');
       this.scene.start('Scores');
     }, this);
