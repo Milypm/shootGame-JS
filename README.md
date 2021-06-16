@@ -1,5 +1,5 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-# Retro-Shooter-Game with Phaser3/JavaSccript
+# Retro-Shooter-Game With Phaser3/JavaSccript
 
 ![img_1](https://user-images.githubusercontent.com/54684961/122150055-aeb15800-ce22-11eb-8017-08a6f0b0ac97.png)
 ![img_2](https://user-images.githubusercontent.com/54684961/122150131-c983cc80-ce22-11eb-9c13-ce806a8f314f.png)
@@ -10,14 +10,25 @@
 ## Live Project
 You can visit the live project here: [Space-Shooter]()
 
+## Project Presentation
+[Loom](https://www.loom.com/share/475be87cd69348b38d397c0e2f563d66)
+
 ## Built With
 - Phaser3
 - JavaScript
 - Webpack
 - Git
 - Jest
- 
-## How to run it
+
+## Game Context
+Your spaceship is on a mission for collecting as many space diamonds (blue and white) as possible, while avoiding collisions with enemies and their lasers.
+
+## How To Play
+- On the Menu scene, enter your name so we can save your name and score to our database (API)
+- Use the arrow keys (up, down, left, right) for moving, avoid enemies/lasers, and to collect blue and white gems
+- Use the spacebar to shoot lasers to the enemies
+
+## How To Run It
 - It's recommended to use Git's latest version.
 - Clone or download the repo: [shootGame-JS](https://github.com/Milypm/shootGame-JS) to your local system
     - Click on the "Code" green button and copy 'HTTPS URL'
@@ -52,7 +63,7 @@ You can visit the live project here: [Space-Shooter]()
 Any advice and suggestion for improvement are more than welcome.
 Visit [issues' section](https://github.com/Milypm/shootGame-JS/issues)
 
-## Show your support
+## Show Your Support
 Give a :star2: if you like this project!
 
 ## License
