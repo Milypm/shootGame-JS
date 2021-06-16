@@ -1,12 +1,13 @@
 {
   "name": "shootgame-js",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Phaser 3 Space Shooter Game",
   "main": "index.js",
   "private": true,
   "scripts": {
+    "build": "webpack",
+    "start": "npm run build && webpack-dev-server --host=0.0.0.0 --port=$PORT",
     "dev": "webpack --mode development --watch",
-    "build": "webpack --mode development",
     "serve": "webpack serve",
     "test": "jest",
     "watch": "jest --watch *.js"
@@ -17,7 +18,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Milypm/shootGame-JS/issues"
   },
@@ -76,5 +77,6 @@
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",
       "^config$": "<rootDir>/configs/app-config.js"
     }
-  }
+  },
+  "heroku-run-build-script": true
 }
