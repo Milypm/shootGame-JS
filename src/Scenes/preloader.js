@@ -6,7 +6,7 @@ class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('gameTitle', 'src/assets/images/game-title.png');
+    this.load.image('gameTitle', './src/assets/images/game-title.png');
   }
 
   create() {

@@ -6,8 +6,8 @@ class CommandsScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sprBtnBack', 'src/assets/images/sprBtnBack.png');
-    this.load.image('sprBtnBackDown', 'src/assets/images/sprBtnBackDown.png');
+    this.load.image('sprBtnBack', './src/assets/images/sprBtnBack.png');
+    this.load.image('sprBtnBackDown', './src/assets/images/sprBtnBackDown.png');
   }
 
   create() {
@@ -20,7 +20,7 @@ class CommandsScene extends Phaser.Scene {
       <div style="display: flex; flex-direction: column; align-items: flex-start; color: white; font-size: 20px; font-family: Courier;">
         <div style="display: flex">  
           <p>> Use the arrow keys for moving the spaceship: UP, DOWN, LEFT, RIGHT</p>
-          <img src="src/assets/images/move-keys.png" style="width: 90px; height: 60px; margin-left: 20px">
+          <img src="./src/assets/images/move-keys.png" style="width: 90px; height: 60px; margin-left: 20px">
         </div>
         <p>> Avoid collisions with enemies and their lasers</p>
         <p>> Use the SPACEBAR for shooting enemies and win points!</p>
