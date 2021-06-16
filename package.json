@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "dev": "webpack --mode development --watch",
     "serve": "webpack serve",
     "test": "jest",
