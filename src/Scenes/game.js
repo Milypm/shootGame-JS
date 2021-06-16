@@ -12,20 +12,20 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('galaxy', '../assets/images/galaxy.png');
-    this.load.image('player', '../assets/images/player.png');
-    this.load.image('enemy', '../assets/images/Enemy.png');
-    this.load.image('laserEnemy', '../assets/images/sprLaserEnemy.png');
-    this.load.image('laserPlayer', '../assets/images/sprLaserPlayer.png');
-    this.load.image('blueGem', '../assets/images/blue-gem.png');
-    this.load.image('whiteGem', '../assets/images/white-gem.png');
-    this.load.spritesheet('sprExplosion', '../assets/images/sprExplosion.png', {
+    this.load.image('galaxy', './assets/images/galaxy.png');
+    this.load.image('player', './assets/images/player.png');
+    this.load.image('enemy', './assets/images/Enemy.png');
+    this.load.image('laserEnemy', './assets/images/sprLaserEnemy.png');
+    this.load.image('laserPlayer', './assets/images/sprLaserPlayer.png');
+    this.load.image('blueGem', './assets/images/blue-gem.png');
+    this.load.image('whiteGem', './assets/images/white-gem.png');
+    this.load.spritesheet('sprExplosion', './assets/images/sprExplosion.png', {
       frameWidth: 32,
       frameHeight: 32,
     });
-    this.load.audio('sndExplode0', '../assets/sound/sndExplode0.wav');
-    this.load.audio('sndExplode1', '../assets/sound/sndExplode1.wav');
-    this.load.audio('Laser', '../assets/sound/laser.mp3');
+    this.load.audio('sndExplode0', './assets/sound/sndExplode0.wav');
+    this.load.audio('sndExplode1', './assets/sound/sndExplode1.wav');
+    this.load.audio('Laser', './assets/sound/laser.mp3');
   }
 
   create() {

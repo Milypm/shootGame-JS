@@ -9,15 +9,15 @@ class MenuScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('gameTitle', '../assets/images/game-title.png');
-    this.load.image('sprBtnPlay', '../assets/images/sprBtnPlay.png');
-    this.load.image('sprBtnPlayDown', '../assets/images/sprBtnPlayDown.png');
-    this.load.image('sprBtnCommands', '../assets/images/sprBtnCommands.png');
-    this.load.image('sprBtnCommandsDown', '../assets/images/sprBtnCommandsDown.png');
+    this.load.image('gameTitle', './assets/images/game-title.png');
+    this.load.image('sprBtnPlay', './assets/images/sprBtnPlay.png');
+    this.load.image('sprBtnPlayDown', './assets/images/sprBtnPlayDown.png');
+    this.load.image('sprBtnCommands', './assets/images/sprBtnCommands.png');
+    this.load.image('sprBtnCommandsDown', './assets/images/sprBtnCommandsDown.png');
     this.load.image('sprBtnScores', '../assets/images/sprBtnScores.png');
-    this.load.image('sprBtnScoresDown', '../assets/images/sprBtnScoresDown.png');
-    this.load.audio('sndBtnOver', '../assets/sound/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', '../assets/sound/sndBtnDown.wav');
+    this.load.image('sprBtnScoresDown', './assets/images/sprBtnScoresDown.png');
+    this.load.audio('sndBtnOver', './assets/sound/sndBtnOver.wav');
+    this.load.audio('sndBtnDown', './assets/sound/sndBtnDown.wav');
   }
 
   create() {
