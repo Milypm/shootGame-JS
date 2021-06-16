@@ -6,8 +6,8 @@ class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('gameTitle', '../assets/images/game-title.png');
-    this.load.path = '../assets/spaceship-frames/';
+    this.load.image('gameTitle', 'src/assets/images/game-title.png');
+    this.load.path = 'src/assets/spaceship-frames/';
     this.load.image('frame0', 'frame0.png');
     this.load.image('frame1', 'frame1.png');
     this.load.image('frame2', 'frame2.png');

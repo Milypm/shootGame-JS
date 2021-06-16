@@ -9,9 +9,9 @@ class ScoresScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('topScores', '../assets/images/top-scores.png');
-    this.load.image('sprBtnMenu', '../assets/images/sprBtnMenu.png');
-    this.load.image('sprBtnMenuDown', '../assets/images/sprBtnMenuDown.png');
+    this.load.image('topScores', 'src/assets/images/top-scores.png');
+    this.load.image('sprBtnMenu', 'src/assets/images/sprBtnMenu.png');
+    this.load.image('sprBtnMenuDown', 'src/assets/images/sprBtnMenuDown.png');
   }
 
   create() {
