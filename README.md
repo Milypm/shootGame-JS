@@ -5,7 +5,7 @@
 ![img_2](https://user-images.githubusercontent.com/54684961/122150131-c983cc80-ce22-11eb-9c13-ce806a8f314f.png)
 ![img_3](https://user-images.githubusercontent.com/54684961/122150095-bbce4700-ce22-11eb-9113-9cc13f9c0aae.png)
 
-> I created this web video-game which recreates some aspects of classic space-shooting games. I used Phaser3 library for building the whole game environment and the different scenes, such as Boot, Preloader, Menu, Commands, Scores, Game and GameOver. I also used Webpack for bundling modules, classes and assets.
+> I created this web video-game which recreates some aspects of classic space-shooting games. I used the Phaser3 library for building the whole game environment and the different scenes, such as Boot, Preloader, Menu, Commands, Scores, Game and GameOver. I also used Webpack for bundling modules, classes and assets.
 
 ## Live Project
 You can visit the live project here: [Space-Shooter]()
