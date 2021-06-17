@@ -9,7 +9,7 @@
 A provided API was used to store/retrieve the players/scores.
 
 ## Live Project
-You can visit the live project here: [Space-Shooter]()
+You can visit the live project here: [Space-Shooter-Netlify](https://space-shooter-game1706.netlify.app/)
 
 ## Project Presentation
 Watch a live presentation for the project here: [Loom](https://www.loom.com/share/475be87cd69348b38d397c0e2f563d66)
