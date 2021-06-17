@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
-import PreloaderScene from './Scenes/preloader';
-import MenuScene from './Scenes/menu';
-import CommandsScene from './Scenes/commands';
-import GameScene from './Scenes/game';
-import GameOverScene from './Scenes/gameover';
-import ScoresScene from './Scenes/scores';
+import PreloaderScene from './scenes/preloader';
+import MenuScene from './scenes/menu';
+import CommandsScene from './scenes/commands';
+import GameScene from './scenes/game';
+import GameOverScene from './scenes/gameover';
+import ScoresScene from './scenes/scores';
 
 const config = {
   type: Phaser.AUTO,
