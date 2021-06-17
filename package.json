@@ -5,8 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "webpack --config webpack/prod.js ",
-    "start": "webpack serve --config webpack/base.js --open",
+    "build": "webpack",
+    "start": "npm run build && webpack serve --port=8000",
     "test": "jest"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "babel-jest": "^27.0.2",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "*",
+    "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
     "eslint": "^7.27.0",
     "eslint-config-airbnb-base": "^14.2.1",

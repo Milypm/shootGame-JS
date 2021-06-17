@@ -12,7 +12,7 @@ class Entity extends Phaser.GameObjects.Sprite {
     this.setData('isDead', false);
   }
 
-  explode = (canDestroy) => {
+  explode(canDestroy) {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion');
       this.play('sprExplosion');

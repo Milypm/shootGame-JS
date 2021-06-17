@@ -19,7 +19,7 @@ class GameScene extends Phaser.Scene {
     this.load.image('laserPlayer', '../src/assets/images/sprLaserPlayer.png');
     this.load.image('blueGem', '../src/assets/images/blue-gem.png');
     this.load.image('whiteGem', '../src/assets/images/white-gem.png');
-    this.load.spritesheet('sprExplosion', './src/assets/images/sprExplosion.png', {
+    this.load.spritesheet('sprExplosion', '../src/assets/images/sprExplosion.png', {
       frameWidth: 32,
       frameHeight: 32,
     });
