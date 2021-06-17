@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack",
     "start": "npm run build && webpack serve --port=8000",
-    "test": "jest"
+    "test": "jest",
+    "netlify": "netlify"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "jest": "^27.0.4",
     "jest-canvas-mock": "^2.3.1",
     "jest-localstorage-mock": "^2.4.14",
+    "netlify-cli": "^2.12.0",
     "raw-loader": "^4.0.2",
     "regenerator-runtime": "^0.13.7",
     "style-loader": "^2.0.0",
