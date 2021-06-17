@@ -1,6 +1,6 @@
-import PreloaderScene from '../src/Scenes/preloader';
+import PreloaderScene from '../src/scenes/preloader';
 
-jest.mock('../src/Scenes/preloader');
+jest.mock('../src/scenes/preloader');
 
 const connectMock = jest.fn();
 

@@ -1,6 +1,6 @@
-import GameOverScene from '../src/Scenes/gameover';
+import GameOverScene from '../src/scenes/gameover';
 
-jest.mock('../src/Scenes/gameover');
+jest.mock('../src/scenes/gameover');
 
 const connectMock = jest.fn();
 

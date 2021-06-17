@@ -1,6 +1,6 @@
-import MenuScene from '../src/Scenes/menu';
+import MenuScene from '../src/scenes/menu';
 
-jest.mock('../src/Scenes/menu');
+jest.mock('../src/scenes/menu');
 
 const connectMock = jest.fn();
 

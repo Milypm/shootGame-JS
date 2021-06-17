@@ -1,6 +1,6 @@
-import CommandsScene from '../src/Scenes/commands';
+import CommandsScene from '../src/scenes/commands';
 
-jest.mock('../src/Scenes/commands');
+jest.mock('../src/scenes/commands');
 
 const connectMock = jest.fn();
 
