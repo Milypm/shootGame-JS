@@ -1,7 +1,7 @@
 /* eslint no-tabs: ["error", { allowIndentationTabs: true }] */
 
 import Phaser from 'phaser';
-import scoreAndAPI from '../api';
+import {userName} from '../api';
 
 class MenuScene extends Phaser.Scene {
   constructor() {
@@ -45,7 +45,7 @@ class MenuScene extends Phaser.Scene {
           this.setVisible(false);
           const inputName = inputUsername.value;
           text.setText(`Let's go, ${inputName}!`);
-          scoreAndAPI.userName(inputName);
+          userName(inputName);
         } else {
           this.setVisible(true);
         }

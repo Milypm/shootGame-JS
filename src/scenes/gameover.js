@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import scoreAndAPI from '../api';
+import {scoreForOver} from '../api';
 
 class GameOverScene extends Phaser.Scene {
   constructor() {
@@ -15,7 +15,7 @@ class GameOverScene extends Phaser.Scene {
   }
 
   create() {
-    const score = scoreAndAPI.scoreForOver();
+    const score = scoreForOver();
 
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),

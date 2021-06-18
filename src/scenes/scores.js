@@ -1,7 +1,7 @@
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
 import Phaser from 'phaser';
-import scoreAndAPI from '../api';
+import {getScores} from '../api';
 
 class ScoresScene extends Phaser.Scene {
   constructor() {
@@ -24,7 +24,7 @@ class ScoresScene extends Phaser.Scene {
 
     this.add.image(640, 200, 'topScores');
 
-    scoreAndAPI.getScores().then((data) => {
+    getScores().then((data) => {
       for (let i = 0; i < 5; i++) {
         if (data[i] !== undefined) {
           arr.push(data[i].user);

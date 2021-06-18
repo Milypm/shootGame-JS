@@ -26,6 +26,7 @@ Watch a live presentation for the project here: [Loom](https://www.loom.com/shar
 Your spaceship is on a mission for collecting as many space diamonds (blue and white) as possible, while avoiding collisions with enemies and their lasers.
 
 ## How To Play (Browser)
+- On the live link: go to [Space-Shooter]()
 - On the Menu scene, enter your name so we can save your name and score to our database (API)
 - Use the arrow keys (up, down, left, right) for moving, avoid enemies/lasers, and to collect blue and white gems
 - Use the spacebar to shoot lasers to the enemies
@@ -37,8 +38,14 @@ Your spaceship is on a mission for collecting as many space diamonds (blue and w
     - **On an empty folder** on your local system, open the command-line: `git clone 'HTTPS URL'`
 - Go to the repo root directory
 - Install webpack-dev-server: 'npm install webpack-dev-server --save-dev'
-- Run 'npm run serve'
+- On your terminal, run 'npm run start'
 - When the browser opens, click on 'dist' directory
+
+## Recommendations For Playing (Chrome / Firefox)
+- To avoid getting Autoplay related warnings in the browser console:
+    - Click on Top URL Left Bar and show Below Popup
+    - Then click on Allow Audio and Video
+    - Then refresh your browser, now you shouldn't get any Autoplay related warning in the browser console
 
 ## Tests (Code Editor Or Terminal/Command Line)
 - Install Jest: 'npm install --save-dev jest'

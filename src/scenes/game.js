@@ -1,7 +1,7 @@
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
 import Phaser from 'phaser';
-import scoreAndAPI from '../api';
+import {nameForScore, setPlayerScore, getScore} from '../api';
 import {
   Player, Enemy, BlueGem, WhiteGem,
 } from './entity';
@@ -29,7 +29,7 @@ class GameScene extends Phaser.Scene {
   }
 
   create() {
-    const user = scoreAndAPI.nameForScore();
+    const user = nameForScore();
     let score = 0;
     let pointsC;
     let whiteGCounter = 0;
@@ -175,8 +175,8 @@ class GameScene extends Phaser.Scene {
         player.explode(false);
         player.onDestroy();
         score = (score === 0) ? '0' : score;
-        scoreAndAPI.setPlayerScore(user, score);
-        scoreAndAPI.getScore(score);
+        setPlayerScore(user, score);
+        getScore(score);
       }
     });
 
@@ -187,8 +187,8 @@ class GameScene extends Phaser.Scene {
         player.explode(false);
         player.onDestroy();
         score = (score === 0) ? '0' : score;
-        scoreAndAPI.setPlayerScore(user, score);
-        scoreAndAPI.getScore(score);
+        setPlayerScore(user, score);
+        getScore(score);
       }
     });
 
