@@ -1,14 +1,14 @@
 /* eslint no-irregular-whitespace: [0] */
 
 import mockedAxios from 'axios';
-import scoreAndAPI from '../src/api';
+import { getScores } from '../src/api';
 
 global.fetch = jest.fn(() => Promise.resolve({
   json: () => Promise.resolve([]),
 }));
 
 test('if returned value is correct', async () => {
-  const json = await scoreAndAPI.getScores();
+  const json = await getScores();
   expect(typeof json).toBe('string');
 });
 

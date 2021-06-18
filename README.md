@@ -9,10 +9,10 @@
 A provided API was used to store/retrieve the players/scores.
 
 ## Live Project
-You can visit the live project here: [Space-Shooter]()
+You can visit the live project here: [Space-Shooter-Netlify](https://space-shooter-game1706.netlify.app/)
 
 ## Project Presentation
-Watch a live presentation for the project here: [Loom](https://www.loom.com/share/475be87cd69348b38d397c0e2f563d66)
+Watch a short live presentation for the project here: [Loom](https://www.loom.com/share/475be87cd69348b38d397c0e2f563d66)
 
 ## Built With
 - Phaser3
@@ -26,28 +26,36 @@ Watch a live presentation for the project here: [Loom](https://www.loom.com/shar
 Your spaceship is on a mission for collecting as many space diamonds (blue and white) as possible, while avoiding collisions with enemies and their lasers.
 
 ## How To Play (Browser)
-- On the live link: go to [Space-Shooter]()
-- On the Menu scene, enter your name so we can save your name and score to our database (API)
-- Use the arrow keys (up, down, left, right) for moving, avoid enemies/lasers, and to collect blue and white gems
-- Use the spacebar to shoot lasers to the enemies
+- Go to [Space-Shooter-Netlify](https://space-shooter-game1706.netlify.app/)... OR ...
+- Follow the steps of "How To Run It (On Local System)" below
+    - On the Menu scene, enter your name so we can save your name and score to our database (API)
+    - Click on the "COMMANDS" button to have a look at the game's rules and commands
+    - Click on the "PLAY" button to start the game
+    - Use the arrow keys (up, down, left, right) for moving, avoid  enemies/lasers, and to collect blue and white gems
+    - Use the spacebar to shoot lasers to the enemies
+    - Look at your points/collected gems at the top-right corner of the screen
+    - If you get hit by an enemy or its laser, you get killed, and you will see the "GAME OVER" screen with your final score
+    - Click on the "RESTART" button to play again (as a new player)
+    - Click on the "SCORES" button to see the current top five scores
+    - Click on the "MENU" button to go to the Menu scene
 
 ## How To Run It (On Local System)
-- It's recommended to use Git's latest version.
-- Clone or download the repo: [shootGame-JS](https://github.com/Milypm/shootGame-JS) to your local system
+1. It's recommended to use Git's latest version.
+2. Clone or download the repo: [shootGame-JS](https://github.com/Milypm/shootGame-JS) to your local system
     - Click on the "Code" green button and copy 'HTTPS URL'
     - **On an empty folder** on your local system, open the command-line: `git clone 'HTTPS URL'`
-- Go to the repo root directory
-- Install webpack-dev-server: 'npm install webpack-dev-server --save-dev'
-- On your terminal, run 'npm run start'
-- When the browser opens, click on 'dist' directory
+3. Go to the repo root directory
+4. Install webpack-dev-server: 'npm install webpack-dev-server --save-dev'
+5. On your terminal, run 'npm run start'
+6. When the browser opens, click on 'dist' directory
 
 ## Recommendations For Playing (Chrome / Firefox)
-- To avoid getting Autoplay related warnings in the browser console:
-    - Click on Top URL Left Bar and show Below Popup
-    - Then click on Allow Audio and Video
-    - Then refresh your browser, now you shouldn't get any Autoplay related warning in the browser console
+- To avoid getting autoplay related warnings in the browser console:
+    - Click on top URL left bar and show below popup
+    - Then click on allow audio and video
+    - Then refresh your browser, now you shouldn't get any autoplay related warning in the browser console
 
-## Tests (Code Editor Or Terminal/Command Line)
+## Tests (Code Editor Terminal / Command Line)
 - Install Jest: 'npm install --save-dev jest'
 - Run 'npm run test' or 'npm run watch' (for automatic Jest execution after updating the code)
 

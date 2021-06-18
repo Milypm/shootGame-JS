@@ -1,7 +1,7 @@
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
 import Phaser from 'phaser';
-import {nameForScore, setPlayerScore, getScore} from '../api';
+import { nameForScore, setPlayerScore, getScore } from '../api';
 import {
   Player, Enemy, BlueGem, WhiteGem,
 } from './entity';
@@ -9,23 +9,6 @@ import {
 class GameScene extends Phaser.Scene {
   constructor() {
     super('Game');
-  }
-
-  preload() {
-    this.load.image('galaxy', '../src/assets/images/galaxy.png');
-    this.load.image('player', '../src/assets/images/player.png');
-    this.load.image('enemy', '../src/assets/images/Enemy.png');
-    this.load.image('laserEnemy', '../src/assets/images/sprLaserEnemy.png');
-    this.load.image('laserPlayer', '../src/assets/images/sprLaserPlayer.png');
-    this.load.image('blueGem', '../src/assets/images/blue-gem.png');
-    this.load.image('whiteGem', '../src/assets/images/white-gem.png');
-    this.load.spritesheet('sprExplosion', '../src/assets/images/sprExplosion.png', {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
-    this.load.audio('sndExplode0', '../src/assets/sound/sndExplode0.wav');
-    this.load.audio('sndExplode1', '../src/assets/sound/sndExplode1.wav');
-    this.load.audio('Laser', '../src/assets/sound/laser.mp3');
   }
 
   create() {

@@ -1,23 +1,11 @@
 /* eslint no-tabs: ["error", { allowIndentationTabs: true }] */
 
 import Phaser from 'phaser';
-import {userName} from '../api';
+import { userName } from '../api';
 
 class MenuScene extends Phaser.Scene {
   constructor() {
     super('Menu');
-  }
-
-  preload() {
-    this.load.image('gameTitle', '../src/assets/images/game-title.png');
-    this.load.image('sprBtnPlay', '../src/assets/images/sprBtnPlay.png');
-    this.load.image('sprBtnPlayDown', '../src/assets/images/sprBtnPlayDown.png');
-    this.load.image('sprBtnCommands', '../src/assets/images/sprBtnCommands.png');
-    this.load.image('sprBtnCommandsDown', '../src/assets/images/sprBtnCommandsDown.png');
-    this.load.image('sprBtnScores', '../src/assets/images/sprBtnScores.png');
-    this.load.image('sprBtnScoresDown', '../src/assets/images/sprBtnScoresDown.png');
-    this.load.audio('sndBtnOver', '../src/assets/sound/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', '../src/assets/sound/sndBtnDown.wav');
   }
 
   create() {

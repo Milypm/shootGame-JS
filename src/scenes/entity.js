@@ -47,9 +47,8 @@ class PlayerLaser extends Entity {
 
 class Player extends Entity {
   constructor(scene, x, y, key) {
-    super(scene, x, y, key, 'Player');
+    super(scene, x, y, 'player', key, 'Player');
     this.setData('speed', 250);
-    this.play('player');
     this.setData('isShooting', false);
     this.setData('timerShootDelay', 10);
     this.setData('timerShootTick', this.getData('timerShootDelay') - 1);
@@ -117,7 +116,6 @@ class Enemy extends Entity {
       callbackScope: this,
       loop: true,
     });
-    this.play('enemy');
   }
 
   onDestroy = () => {

@@ -1,17 +1,11 @@
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
 import Phaser from 'phaser';
-import {getScores} from '../api';
+import { getScores } from '../api';
 
 class ScoresScene extends Phaser.Scene {
   constructor() {
     super('Scores');
-  }
-
-  preload() {
-    this.load.image('topScores', '../src/assets/images/top-scores.png');
-    this.load.image('sprBtnMenu', '../src/assets/images/sprBtnMenu.png');
-    this.load.image('sprBtnMenuDown', '../src/assets/images/sprBtnMenuDown.png');
   }
 
   create() {

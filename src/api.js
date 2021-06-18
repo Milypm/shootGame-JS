@@ -65,5 +65,5 @@ const setPlayerScore = async (user, score) => {
 };
 
 export {
-  userName, getScore, nameForScore, scoreForOver, getScores, setPlayerScore
+  userName, getScore, nameForScore, scoreForOver, getScores, setPlayerScore,
 };

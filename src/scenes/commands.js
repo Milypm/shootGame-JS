@@ -5,11 +5,6 @@ class CommandsScene extends Phaser.Scene {
     super('Commands');
   }
 
-  preload() {
-    this.load.image('sprBtnBack', '../src/assets/images/sprBtnBack.png');
-    this.load.image('sprBtnBackDown', '../src/assets/images/sprBtnBackDown.png');
-  }
-
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
@@ -31,18 +26,18 @@ class CommandsScene extends Phaser.Scene {
 
     this.btnBack = this.add.sprite(300, 400, 'sprBtnBack');
     this.btnBack.setInteractive();
-    this.btnBack.on('pointerover', () => {
+    this.btnBack.on('pointerover', function () {
       this.btnBack.setTexture('sprBtnBackDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnBack.on('pointerout', () => {
+    this.btnBack.on('pointerout', function () {
       this.setTexture('sprBtnBack');
     });
-    this.btnBack.on('pointerdown', () => {
+    this.btnBack.on('pointerdown', function () {
       this.btnBack.setTexture('sprBtnBackDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnBack.on('pointerup', () => {
+    this.btnBack.on('pointerup', function () {
       this.btnBack.setTexture('sprBtnBack');
       this.scene.start('Menu');
     }, this);

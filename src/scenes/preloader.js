@@ -23,6 +23,42 @@ class PreloaderScene extends Phaser.Scene {
     this.load.image('frame13', '../src/assets/spaceship-frames/frame13.png');
     this.load.image('frame14', '../src/assets/spaceship-frames/frame14.png');
     this.load.image('frame15', '../src/assets/spaceship-frames/frame15.png');
+
+    this.load.image('gameTitle', '../src/assets/images/game-title.png');
+    this.load.image('sprBtnPlay', '../src/assets/images/sprBtnPlay.png');
+    this.load.image('sprBtnPlayDown', '../src/assets/images/sprBtnPlayDown.png');
+    this.load.image('sprBtnCommands', '../src/assets/images/sprBtnCommands.png');
+    this.load.image('sprBtnCommandsDown', '../src/assets/images/sprBtnCommandsDown.png');
+    this.load.image('sprBtnScores', '../src/assets/images/sprBtnScores.png');
+    this.load.image('sprBtnScoresDown', '../src/assets/images/sprBtnScoresDown.png');
+    this.load.audio('sndBtnOver', '../src/assets/sound/sndBtnOver.wav');
+    this.load.audio('sndBtnDown', '../src/assets/sound/sndBtnDown.wav');
+
+    this.load.image('sprBtnBack', '../src/assets/images/sprBtnBack.png');
+    this.load.image('sprBtnBackDown', '../src/assets/images/sprBtnBackDown.png');
+
+    this.load.image('galaxy', '../src/assets/images/galaxy.png');
+    this.load.image('player', '../src/assets/images/player.png');
+    this.load.image('enemy', '../src/assets/images/Enemy.png');
+    this.load.image('laserEnemy', '../src/assets/images/sprLaserEnemy.png');
+    this.load.image('laserPlayer', '../src/assets/images/sprLaserPlayer.png');
+    this.load.image('blueGem', '../src/assets/images/blue-gem.png');
+    this.load.image('whiteGem', '../src/assets/images/white-gem.png');
+    this.load.spritesheet('sprExplosion', '../src/assets/images/sprExplosion.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
+    this.load.audio('sndExplode0', '../src/assets/sound/sndExplode0.wav');
+    this.load.audio('sndExplode1', '../src/assets/sound/sndExplode1.wav');
+    this.load.audio('Laser', '../src/assets/sound/laser.mp3');
+
+    this.load.image('topScores', '../src/assets/images/top-scores.png');
+    this.load.image('sprBtnMenu', '../src/assets/images/sprBtnMenu.png');
+    this.load.image('sprBtnMenuDown', '../src/assets/images/sprBtnMenuDown.png');
+
+    this.load.image('game-over', '../src/assets/images/gameover!.png');
+    this.load.image('sprBtnRestart', '../src/assets/images/sprBtnRestart.png');
+    this.load.image('sprBtnRestartDown', '../src/assets/images/sprBtnRestartDown.png');
   }
 
   create() {
