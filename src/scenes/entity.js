@@ -79,7 +79,7 @@ class Player extends Entity {
     }
   }
 
-  onDestroy = () => {
+  playerOnDestroy = () => {
     this.scene.time.addEvent({
       delay: 1000,
       callback() {
@@ -118,7 +118,7 @@ class Enemy extends Entity {
     });
   }
 
-  onDestroy = () => {
+  enemyOnDestroy = () => {
     if (this.shootTimer !== undefined) {
       if (this.shootTimer) {
         this.shootTimer.remove(false);

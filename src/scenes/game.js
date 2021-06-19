@@ -119,8 +119,8 @@ class GameScene extends Phaser.Scene {
 
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
-        if (enemy.onDestroy() !== undefined) {
-          enemy.onDestroy();
+        if (enemy.enemyOnDestroy() !== undefined) {
+          enemy.enemyOnDestroy();
         }
         enemy.explode(true);
         playerLaser.destroy();
@@ -156,7 +156,7 @@ class GameScene extends Phaser.Scene {
       if (!player.getData('isDead') && !enemy.getData('isDead') && hit === false) {
         enemy.explode(true);
         player.explode(false);
-        player.onDestroy();
+        player.playerOnDestroy();
         score = (score === 0) ? '0' : score;
         setPlayerScore(user, score);
         getScore(score);
@@ -168,7 +168,7 @@ class GameScene extends Phaser.Scene {
         hit = true;
         laser.destroy();
         player.explode(false);
-        player.onDestroy();
+        player.playerOnDestroy();
         score = (score === 0) ? '0' : score;
         setPlayerScore(user, score);
         getScore(score);
@@ -181,11 +181,6 @@ class GameScene extends Phaser.Scene {
     this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
   }
-
-  counterWhite = (num) => num
-
-  counterBlue = (num) => num
-
   update() {
     if (!this.player.getData('isDead')) {
       this.player.update();
@@ -209,7 +204,7 @@ class GameScene extends Phaser.Scene {
         this.player.setData('isShooting', false);
       }
     } else {
-      this.player.onDestroy();
+      this.player.playerOnDestroy();
     }
 
     for (let i = 0; i < this.enemies.getChildren().length; i++) {
@@ -222,8 +217,8 @@ class GameScene extends Phaser.Scene {
         || enemy.y < -enemy.displayHeight * 4
         || enemy.y > this.game.config.height + enemy.displayHeight) {
         if (enemy) {
-          if (enemy.onDestroy !== undefined) {
-            enemy.onDestroy();
+          if (enemy.enemyOnDestroy !== undefined) {
+            enemy.enemyOnDestroy();
           }
           enemy.destroy();
         }
