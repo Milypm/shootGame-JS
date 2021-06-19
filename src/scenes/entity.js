@@ -41,7 +41,7 @@ class Entity extends Phaser.GameObjects.Sprite {
 class PlayerLaser extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'laserPlayer');
-    this.body.velocity.y = -500;
+    this.body.velocity.y = -800;
   }
 }
 
@@ -101,7 +101,7 @@ class EnemyLaser extends Entity {
 class Enemy extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'enemy');
-    this.body.velocity.y = Phaser.Math.Between(50, 100);
+    this.body.velocity.y = Phaser.Math.Between(20, 60);
     this.shootTimer = this.scene.time.addEvent({
       delay: 600,
       callback() {
