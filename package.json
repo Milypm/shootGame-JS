@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "start": "webpack serve",
+    "start": "npm run build && webpack serve --port-8000",
     "test": "jest",
     "netlify": "netlify"
   },
