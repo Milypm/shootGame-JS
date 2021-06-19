@@ -33,15 +33,15 @@ class GameScene extends Phaser.Scene {
     whiteScore = this.add.text(1190, 65, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
     blueScore = this.add.text(1190, 92, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
 
-    const pointsCounter = (score) => {
+    const pointsCounter = function(score) {
       pointsC = this.add.text(1100, 40, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
     };
 
-    const gemsWCounter = (whiteGCounter) => {
+    const gemsWCounter = function(whiteGCounter) {
       whiteScore = this.add.text(1190, 65, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
     };
 
-    const gemsBCounter = (blueGCounter) => {
+    const gemsBCounter = function(blueGCounter) {
       blueScore = this.add.text(1190, 92, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
     };
 
@@ -117,7 +117,7 @@ class GameScene extends Phaser.Scene {
       loop: true,
     });
 
-    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
+    this.physics.add.collider(this.playerLasers, this.enemies, function(playerLaser, enemy) {
       if (enemy) {
         if (enemy.enemyOnDestroy() !== undefined) {
           enemy.enemyOnDestroy();
@@ -130,7 +130,7 @@ class GameScene extends Phaser.Scene {
       }
     });
 
-    this.physics.add.overlap(this.player, this.gems, (player, gem) => {
+    this.physics.add.overlap(this.player, this.gems, function(player, gem) {
       let points;
       if (gem instanceof BlueGem) {
         gem.destroy();
@@ -152,7 +152,7 @@ class GameScene extends Phaser.Scene {
 
     let hit = false;
 
-    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+    this.physics.add.overlap(this.player, this.enemies, function(player, enemy) {
       if (!player.getData('isDead') && !enemy.getData('isDead') && hit === false) {
         enemy.explode(true);
         player.explode(false);
@@ -163,7 +163,7 @@ class GameScene extends Phaser.Scene {
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
+    this.physics.add.overlap(this.player, this.enemyLasers, function(player, laser) {
       if (!player.getData('isDead') && !laser.getData('isDead')) {
         hit = true;
         laser.destroy();
