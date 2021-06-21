@@ -45,7 +45,6 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "express": "^4.17.1",
     "identity-obj-proxy": "^3.0.0",
     "phaser": "^3.50.0",
     "regenerator-runtime": "^0.13.7"
@@ -75,6 +74,5 @@
       "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",
       "^config$": "<rootDir>/configs/app-config.js"
     }
-  },
-  "heroku-run-build-script": true
+  }
 }
