@@ -65,7 +65,7 @@ Your spaceship is on a mission for collecting as many space diamonds (blue and w
 - [York Computer Solutions: Build a Space Shooter with Phaser 3](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/)
 - [OpenGameArt](https://opengameart.org/)
 - [Ian Peter](https://opengameart.org/users/ian-peter) for Spaceship (Player) image
-- [Xevin](https://opengameart.org/users/xevin) for Spaceship (Player) image
+- [Xevin](https://opengameart.org/users/xevin) for Spaceship (Enemy) image
 - [Clint Bellanger](https://opengameart.org/users/clint-bellanger) for diamonds (gems) images
 - [Giphy.com](https://giphy.com/)
 - [Psyklon](https://giphy.com/balazsvarga/) for [star-wars-hyperspace](https://giphy.com/gifs/star-wars-hyperspace-l0GtxKBCRjO9TtRfy)
