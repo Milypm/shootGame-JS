@@ -1,10 +1,8 @@
 /* eslint-disable import/no-unresolved */
 const CopyPlugin = require('copy-webpack-plugin');
-const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
-const base = require('./base');
 
-module.exports = merge(base, {
+module.exports = {
   mode: 'production',
   output: {
     filename: 'bundle.min.js',
