@@ -14,7 +14,7 @@ class GameOverScene extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown'),
     };
 
-    this.add.image(640, 200, 'game-over');
+    this.add.image(640, 200, 'gameover');
     this.add.text(425, 280, `Your Score: ${score} pts`, { color: '#fff', fontSize: '40px' });
 
     this.btnMenu = this.add.sprite(440, 440, 'sprBtnMenu');

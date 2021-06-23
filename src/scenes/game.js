@@ -33,18 +33,6 @@ class GameScene extends Phaser.Scene {
     whiteScore = this.add.text(1190, 65, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
     blueScore = this.add.text(1190, 92, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
 
-    const pointsCounter = function (score) {
-      pointsC = this.add.text(1100, 40, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
-    };
-
-    const gemsWCounter = function (whiteGCounter) {
-      whiteScore = this.add.text(1190, 65, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
-    };
-
-    const gemsBCounter = function (blueGCounter) {
-      blueScore = this.add.text(1190, 92, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
-    };
-
     this.anims.create({
       key: 'sprExplosion',
       frames: this.anims.generateFrameNumbers('sprExplosion'),
@@ -118,6 +106,8 @@ class GameScene extends Phaser.Scene {
     });
 
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
+      console.log(this);
+      console.log('hit enemy with laser');
       if (enemy) {
         if (enemy.enemyOnDestroy() !== undefined) {
           enemy.enemyOnDestroy();
@@ -126,34 +116,38 @@ class GameScene extends Phaser.Scene {
         playerLaser.destroy();
         score += 15;
         pointsC.destroy();
-        pointsCounter(score);
+        pointsC = this.add.text(1100, 40, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
       }
     });
 
     this.physics.add.overlap(this.player, this.gems, (player, gem) => {
+      console.log(this);
+      console.log('collide with a gem');
       let points;
       if (gem instanceof BlueGem) {
         gem.destroy();
         points = 30;
         blueGCounter += 1;
         blueScore.destroy();
-        gemsBCounter(blueGCounter);
+        blueScore = this.add.text(1190, 92, `${blueGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
       } else {
         gem.destroy();
         points = 50;
         whiteGCounter += 1;
         whiteScore.destroy();
-        gemsWCounter(whiteGCounter);
+        whiteScore = this.add.text(1190, 65, `${whiteGCounter}`, { color: '#fff', fontSize: '14px ', fontStyle: 'bold' });
       }
       score += points;
       pointsC.destroy();
-      pointsCounter(score);
+      pointsC = this.add.text(1100, 40, `Points: ${score}`, { color: '#fff', fontSize: '15px ', fontStyle: 'bold' });
     });
 
     let hit = false;
 
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead') && !enemy.getData('isDead') && hit === false) {
+        console.log(this);
+        console.log('crashed with enemy');
         enemy.explode(true);
         player.explode(false);
         player.playerOnDestroy();
@@ -165,6 +159,8 @@ class GameScene extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead') && !laser.getData('isDead')) {
+        console.log(this);
+        console.log('crashed with enemy laser');
         hit = true;
         laser.destroy();
         player.explode(false);
