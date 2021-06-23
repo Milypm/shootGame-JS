@@ -106,8 +106,6 @@ class GameScene extends Phaser.Scene {
     });
 
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
-      console.log(this);
-      console.log('hit enemy with laser');
       if (enemy) {
         if (enemy.enemyOnDestroy() !== undefined) {
           enemy.enemyOnDestroy();
@@ -121,8 +119,6 @@ class GameScene extends Phaser.Scene {
     });
 
     this.physics.add.overlap(this.player, this.gems, (player, gem) => {
-      console.log(this);
-      console.log('collide with a gem');
       let points;
       if (gem instanceof BlueGem) {
         gem.destroy();
@@ -146,8 +142,6 @@ class GameScene extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead') && !enemy.getData('isDead') && hit === false) {
-        console.log(this);
-        console.log('crashed with enemy');
         enemy.explode(true);
         player.explode(false);
         player.playerOnDestroy();
@@ -159,8 +153,6 @@ class GameScene extends Phaser.Scene {
 
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead') && !laser.getData('isDead')) {
-        console.log(this);
-        console.log('crashed with enemy laser');
         hit = true;
         laser.destroy();
         player.explode(false);
