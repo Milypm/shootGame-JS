@@ -1,5 +1,5 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-# Retro-Shooter-Game With Phaser3/JavaSccript
+# Retro Shooter Game With Phaser3/JavaScript
 
 ![img_1](https://user-images.githubusercontent.com/54684961/122150055-aeb15800-ce22-11eb-8017-08a6f0b0ac97.png)
 ![img_2](https://user-images.githubusercontent.com/54684961/122150131-c983cc80-ce22-11eb-9c13-ce806a8f314f.png)
