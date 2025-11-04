@@ -32,18 +32,18 @@ class CommandsScene extends Phaser.Scene {
 
     this.btnBack = this.add.sprite(300, 400, 'sprBtnBack');
     this.btnBack.setInteractive();
-    this.btnBack.on('pointerover', function () {
+    this.btnBack.on('pointerover', () => {
       this.btnBack.setTexture('sprBtnBackDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnBack.on('pointerout', function () {
+    this.btnBack.on('pointerout', () => {
       this.setTexture('sprBtnBack');
     });
-    this.btnBack.on('pointerdown', function () {
+    this.btnBack.on('pointerdown', () => {
       this.btnBack.setTexture('sprBtnBackDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnBack.on('pointerup', function () {
+    this.btnBack.on('pointerup', () => {
       this.btnBack.setTexture('sprBtnBack');
       this.scene.start('Menu');
     }, this);

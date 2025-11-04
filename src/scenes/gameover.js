@@ -19,54 +19,54 @@ class GameOverScene extends Phaser.Scene {
 
     this.btnMenu = this.add.sprite(440, 440, 'sprBtnMenu');
     this.btnMenu.setInteractive();
-    this.btnMenu.on('pointerover', function () {
+    this.btnMenu.on('pointerover', () => {
       this.btnMenu.setTexture('sprBtnMenuDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnMenu.on('pointerout', function () {
+    this.btnMenu.on('pointerout', () => {
       this.setTexture('sprBtnMenu');
     });
-    this.btnMenu.on('pointerdown', function () {
+    this.btnMenu.on('pointerdown', () => {
       this.btnMenu.setTexture('sprBtnMenuDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnMenu.on('pointerup', function () {
+    this.btnMenu.on('pointerup', () => {
       this.btnMenu.setTexture('sprBtnMenu');
       this.scene.start('Menu');
     }, this);
 
     this.btnRestart = this.add.sprite(630, 440, 'sprBtnRestart');
     this.btnRestart.setInteractive();
-    this.btnRestart.on('pointerover', function () {
+    this.btnRestart.on('pointerover', () => {
       this.btnRestart.setTexture('sprBtnRestartDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnRestart.on('pointerout', function () {
+    this.btnRestart.on('pointerout', () => {
       this.setTexture('sprBtnRestart');
     });
-    this.btnRestart.on('pointerdown', function () {
+    this.btnRestart.on('pointerdown', () => {
       this.btnRestart.setTexture('sprBtnRestartDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnRestart.on('pointerup', function () {
+    this.btnRestart.on('pointerup', () => {
       this.btnRestart.setTexture('sprBtnRestart');
       this.scene.start('Game');
     }, this);
 
     this.btnScores = this.add.sprite(820, 440, 'sprBtnScores');
     this.btnScores.setInteractive();
-    this.btnScores.on('pointerover', function () {
+    this.btnScores.on('pointerover', () => {
       this.btnScores.setTexture('sprBtnScoresDown');
       this.sfx.btnOver.play();
     }, this);
-    this.btnScores.on('pointerout', function () {
+    this.btnScores.on('pointerout', () => {
       this.setTexture('sprBtnScores');
     });
-    this.btnScores.on('pointerdown', function () {
+    this.btnScores.on('pointerdown', () => {
       this.btnScores.setTexture('sprBtnScoresDown');
       this.sfx.btnDown.play();
     }, this);
-    this.btnScores.on('pointerup', function () {
+    this.btnScores.on('pointerup', () => {
       this.btnScores.setTexture('sprBtnScores');
       this.scene.start('Scores');
     }, this);

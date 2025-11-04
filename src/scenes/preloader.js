@@ -93,7 +93,7 @@ class PreloaderScene extends Phaser.Scene {
 
     this.add.text(540, 600, 'Loading game...', { color: '#fff', fontSize: '25px ', fontStyle: 'bold' });
 
-    this.load.on('complete', function () {
+    this.load.on('complete', () => {
       this.ready();
     });
 
